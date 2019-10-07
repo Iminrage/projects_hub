@@ -1,27 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
-const Nav = styled.nav`
-  border-bottom: 1px solid red;
-  padding: 10px 150px;
-`;
-const Ul = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: flex;
-`;
-const Li = styled.li`
-  list-style: none;
-  padding: 0 10px;
-`;
-const NewNavLink = styled(NavLink)`
-  display: inline-block;
-  padding: 10px 40px 10px 30px;
-  border: 1px solid gray;
-  text-decoration: none;
-  color: black;
-`;
+import navBg from "./img/nav_bg.jpg";
 
 function Navbar() {
   return (
@@ -45,5 +25,32 @@ function Navbar() {
     </div>
   );
 }
+
+const Nav = styled.nav`
+  border-bottom: 1px solid #c6e9ff;
+	padding: 10px 150px;
+	background: url(${navBg}) 0 50% / cover no-repeat;
+`;
+const Ul = styled.ul`
+  margin: 0;
+  padding: 0;
+  display: flex;
+`;
+const Li = styled.li`
+  list-style: none;
+  padding: 0 10px;
+`;
+const NewNavLink = styled(NavLink)`
+  display: inline-block;
+  padding: 10px 40px 10px 30px;
+  border: 1px solid gray;
+  text-decoration: none;
+	color: white;
+	background-color: rgba(58,58,58, 0.5);
+	:hover{
+		background-color: rgba(58,58,58, 0.8);
+		color: #cbebff;
+	}
+`;
 
 export default Navbar;
