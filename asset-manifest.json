@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/skytrack_test/static/css/main.4322c0b8.chunk.css",
-    "main.js": "/skytrack_test/static/js/main.499b7d8f.chunk.js",
-    "main.js.map": "/skytrack_test/static/js/main.499b7d8f.chunk.js.map",
+    "main.js": "/skytrack_test/static/js/main.c4f43817.chunk.js",
+    "main.js.map": "/skytrack_test/static/js/main.c4f43817.chunk.js.map",
     "runtime-main.js": "/skytrack_test/static/js/runtime-main.77f13953.js",
     "runtime-main.js.map": "/skytrack_test/static/js/runtime-main.77f13953.js.map",
-    "static/js/2.da9a46e7.chunk.js": "/skytrack_test/static/js/2.da9a46e7.chunk.js",
-    "static/js/2.da9a46e7.chunk.js.map": "/skytrack_test/static/js/2.da9a46e7.chunk.js.map",
+    "static/js/2.007813a3.chunk.js": "/skytrack_test/static/js/2.007813a3.chunk.js",
+    "static/js/2.007813a3.chunk.js.map": "/skytrack_test/static/js/2.007813a3.chunk.js.map",
     "index.html": "/skytrack_test/index.html",
-    "precache-manifest.82234fc166c44b202dfd0bf801a1b3aa.js": "/skytrack_test/precache-manifest.82234fc166c44b202dfd0bf801a1b3aa.js",
+    "precache-manifest.35230fe103a4c178115a3929ae639476.js": "/skytrack_test/precache-manifest.35230fe103a4c178115a3929ae639476.js",
     "service-worker.js": "/skytrack_test/service-worker.js",
-    "static/css/main.4322c0b8.chunk.css.map": "/skytrack_test/static/css/main.4322c0b8.chunk.css.map"
+    "static/css/main.4322c0b8.chunk.css.map": "/skytrack_test/static/css/main.4322c0b8.chunk.css.map",
+    "static/media/nav_bg.jpg": "/skytrack_test/static/media/nav_bg.8e60517b.jpg"
   }
 }
