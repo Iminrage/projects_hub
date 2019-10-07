@@ -2,7 +2,7 @@
   "name": "testapp",
   "version": "0.1.0",
 	"private": true,
-	"homepage": "https://iminrage.github.io/skytrack_test/",
+	"homepage": "https://iminrage.github.io/projects_hub/",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.10.1",
