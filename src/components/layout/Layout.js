@@ -1,9 +1,9 @@
 import React from "react";
-import Logo from "../img/logo.png";
-import ImgOfSix from "../img/imgOfSix.png";
-import Green from "../img/green.png";
+import Logo from "./img/logo.png";
+import ImgOfSix from "./img/imgOfSix.png";
+import Green from "./img/green.png";
 import styled from "styled-components";
-import Foot from "../img/foot.png";
+import Foot from "./img/foot.png";
 
 const Task3Wrapper = styled.div`
   min-height: 100vh;
