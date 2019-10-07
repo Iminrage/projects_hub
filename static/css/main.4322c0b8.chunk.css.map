@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,UACE,SAAU,CACX,QAED,CACA,KAEC,aACD","file":"main.4322c0b8.chunk.css","sourcesContent":["html, body{\n  padding: 0;\n\tmargin: 0;\n\n}\nhtml{\n\n\toverflow: auto;\n}"]}
