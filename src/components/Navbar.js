@@ -31,8 +31,11 @@ function Navbar() {
           <Li>
             <NewNavLink to="/projects_hub/">Home</NewNavLink>
           </Li>
+					<Li>
+            <NewNavLink to="/projects_hub/aviasales_demo/">Aviasales Demo</NewNavLink>
+          </Li>
           <Li>
-            <NewNavLink to="/projects_hub/article_home/">ArticleHome</NewNavLink>
+            <NewNavLink to="/projects_hub/article_home/">Article Home</NewNavLink>
           </Li>
           <Li>
             <NewNavLink to="/projects_hub/layout">Layout</NewNavLink>
