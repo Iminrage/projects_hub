@@ -12,7 +12,7 @@ class Search extends React.Component {
         today: "",
         recomendedBackDate: ""
       }
-		};
+    };
   }
   componentDidMount() {
     /* TODO */
@@ -40,12 +40,12 @@ class Search extends React.Component {
     console.log(this.state.inputValues);
   };
   handleSwap = () => {
-		let newVals = this.state.inputValues;
-		newVals = {
-			...this.state.inputValues,
-			dept: this.state.inputValues.dest,
-			dest: this.state.inputValues.dept
-		}
+    let newVals = this.state.inputValues;
+    newVals = {
+      ...this.state.inputValues,
+      dept: this.state.inputValues.dest,
+      dest: this.state.inputValues.dept
+    };
     console.log(newVals);
     this.setState({ inputValues: newVals });
   };
@@ -56,7 +56,7 @@ class Search extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <InputsWrapper>
-          <MainInputWrapper>
+          <MainInputWrapperWithSwap>
             <MainSearchInputs
               type="text"
               placeholder={"Откуда"}
@@ -64,8 +64,11 @@ class Search extends React.Component {
               value={this.state.inputValues.dept}
               onChange={this.handleInputChange}
             />
-          </MainInputWrapper>
-          <Swap onClick={this.handleSwap} />
+            <Swap onClick={this.handleSwap}>
+              <SwapArrowR>{"—>"}</SwapArrowR>
+              <SwapArrowL>{"<—"}</SwapArrowL>
+            </Swap>
+          </MainInputWrapperWithSwap>
           <MainInputWrapper>
             <MainSearchInputs
               type="text"
@@ -154,22 +157,32 @@ const SearchButton = styled.button`
 `;
 const Swap = styled.div`
   position: absolute;
-  width: 16px;
-  height: 16px;
   border: 1px solid red;
-  top: 50%;
+  top: calc(50% - 9px);
+  right: -7px;
   border-radius: 15px;
   transform-origin: 50% 50%;
   cursor: pointer;
-  transition: all 0.2s;
+  color: blue;
+  background-color: #fff;
+  font-size: 10px;
+  line-height: 10px;
   :hover {
-    transform: rotate(-45deg);
   }
 `;
+const SwapArrow = styled.span`
+	display: block;
+	user-select: none;
+`;
+const SwapArrowR = styled(SwapArrow)``;
+const SwapArrowL = styled(SwapArrow)``;
 const MainInputWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
+`;
+
+const MainInputWrapperWithSwap = styled(MainInputWrapper)`
+  position: relative;
 `;
 
 export default Search;
