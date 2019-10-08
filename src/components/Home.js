@@ -71,7 +71,8 @@ class Home extends Component {
               простой верстке далеко не уедешь, Так я начал изучать JS.
             </PageText>
             <PageText active={this.state.page === 8 && true}>
-              Быстро нашел стажировку в <a href="">Onpoint</a>, где научился
+              Быстро нашел стажировку в{" "}
+              <ALink href="https://onpoint.ru/">Onpoint</ALink>, где научился
               очень многому в короткие сроки, но узкое направление работы
               Onpoint мне быстро наскучило и я понял, что нужно идти дальше.
             </PageText>
@@ -154,6 +155,12 @@ const PageText = styled.p`
   text-align: center;
   display: ${props => (props.active === true ? "block" : "none")};
   animation: ${fadeIn} 0.5s both;
+`;
+const ALink = styled.a`
+	color: #dcf1ff;
+	:hover{
+		color: #acffaa;
+	}
 `;
 const AboutRowTexts = styled.div`
   display: flex;
