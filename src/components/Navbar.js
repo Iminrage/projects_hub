@@ -15,7 +15,7 @@ function Navbar() {
             <NewNavLink to="/projects_hub/aviasales_demo/">Aviasales Demo</NewNavLink>
           </Li>
           <Li>
-            <NewNavLink to="/projects_hub/article_home/">Article Home</NewNavLink>
+            <NewNavLink to="/projects_hub/articles/">Article Home</NewNavLink>
           </Li>
           <Li>
             <NewNavLink to="/projects_hub/layout">Layout</NewNavLink>

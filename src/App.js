@@ -32,7 +32,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route
             exact
-            path="/projects_hub/article_home/"
+            path="/projects_hub/articles/"
             component={ArticleHome}
           />
           <Route exact path="/projects_hub/" component={Home} />
