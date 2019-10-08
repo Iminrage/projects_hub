@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,UACE,SAAU,CACX,QAAS,CACT,sCACD,CACA,KAEC,aACD","file":"main.20206884.chunk.css","sourcesContent":["html, body{\n  padding: 0;\n\tmargin: 0;\n\tfont-family: Arial, Helvetica, sans-serif;\n}\nhtml{\n\n\toverflow: auto;\n}"]}
