@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Me from "./img/me.jpg";
+import Bg from "./img/bg.jpg";
 
 class Home extends Component {
   state = {
@@ -9,7 +10,7 @@ class Home extends Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       let page = this.state.page + 1;
-      page > 9 && (page = 1);
+      page > 8 && clearInterval(this.interval);
       this.setState({ page: page });
     }, 5000);
   }
@@ -28,109 +29,148 @@ class Home extends Component {
       this.setState({ page: page });
     }
   };
+  handleDot = e => {
+    clearInterval(this.interval);
+    const current = +e.target.dataset.state;
+    this.setState({ page: current });
+  };
   render() {
     return (
       <HomePageContainer>
         <About>
-          <AboutLeftCol>
-            <AboutLeftColTexts>
-              <PageText active={this.state.page === 1 && true}>
-                Привет, я начинающий frontend разработчик!
-              </PageText>
-              <PageText active={this.state.page === 2 && true}>
-                Я мечтаю вырасти в полноценного разработчика и уметь делать
-                всякие крутые штуки. Последний год параллельно с завершением
-                обучения в колледже (по направлению информационной безопасности)
-                я стал изучать верстку.
-              </PageText>
-              <PageText active={this.state.page === 3 && true}>
-                Сначала было совсем трудно и непонятно, но потом в голове стала
-                формироваться общая картинка.
-              </PageText>
-              <PageText active={this.state.page === 4 && true}>
-                Я не случайно выбрал frontend, как направление своего развития.
-              </PageText>
-              <PageText active={this.state.page === 5 && true}>
-                Моя мать сколько я себя помню работала в этой сфере и поэтому
-                уже на стадии изучения мне выпадала возможность верстать
-                реальные коммерческие проекты.
-              </PageText>
-              <PageText active={this.state.page === 6 && true}>
-                Так прошли мои первые 5-6 месяцев в сфере, но время шло, а на
-                носу был диплом и прочие важные мероприятия на учебе, поэтому
-                пришлось сделать перерыв.
-              </PageText>
-              <PageText active={this.state.page === 7 && true}>
-                Вернувшись в строй через 4 месяца быстро стало понятно, что на
-                простой верстке далеко не уедешь, Так я начал изучать JS.
-              </PageText>
-              <PageText active={this.state.page === 8 && true}>
-                Быстро нашел стажировку в <a href="">Onpoint</a>, где научился
-                очень многому в короткие сроки, но узкое направление работы
-                Onpoint мне быстро наскучило и я понял, что нужно идти дальше.
-              </PageText>
-              <PageText active={this.state.page === 9 && true}>
-                На данный момент я открыт для предложений.
-              </PageText>
-            </AboutLeftColTexts>
-            <Pagination>
-              <PaginationBtn
-                data-action="reduce"
-                onClick={this.handlePagination}
-              >
-                {"<"}
-              </PaginationBtn>
-              <Dot></Dot>
-              <Dot></Dot>
-              <Dot></Dot>
-              <PaginationBtn
-                data-action="increase"
-                onClick={this.handlePagination}
-              >
-                {">"}
-              </PaginationBtn>
-            </Pagination>
-          </AboutLeftCol>
-          <AboutRightCol>
-            <ImgMe src={Me} alt="" width="392" height="528" />
-          </AboutRightCol>
+          <AboutGreeting>Привет, я Егор Шевчук</AboutGreeting>
+          <AboutRowTexts>
+            <PageText active={this.state.page === 1 && true}>
+              Я начинающий frontend разработчик!
+            </PageText>
+            <PageText active={this.state.page === 2 && true}>
+              Я мечтаю вырасти в полноценного разработчика и уметь делать всякие
+              крутые штуки. Последний год параллельно с завершением обучения в
+              колледже (по направлению информационной безопасности) я стал
+              изучать верстку.
+            </PageText>
+            <PageText active={this.state.page === 3 && true}>
+              Сначала было совсем трудно и непонятно, но потом в голове стала
+              формироваться общая картинка.
+            </PageText>
+            <PageText active={this.state.page === 4 && true}>
+              Я не случайно выбрал frontend, как направление своего развития.
+            </PageText>
+            <PageText active={this.state.page === 5 && true}>
+              Моя мать сколько я себя помню работала в этой сфере и поэтому уже
+              на стадии изучения мне выпадала возможность верстать реальные
+              коммерческие проекты.
+            </PageText>
+            <PageText active={this.state.page === 6 && true}>
+              Так прошли мои первые 5-6 месяцев в сфере, но время шло, а на носу
+              был диплом и прочие важные мероприятия на учебе, поэтому пришлось
+              сделать перерыв.
+            </PageText>
+            <PageText active={this.state.page === 7 && true}>
+              Вернувшись в строй через 4 месяца быстро стало понятно, что на
+              простой верстке далеко не уедешь, Так я начал изучать JS.
+            </PageText>
+            <PageText active={this.state.page === 8 && true}>
+              Быстро нашел стажировку в <a href="">Onpoint</a>, где научился
+              очень многому в короткие сроки, но узкое направление работы
+              Onpoint мне быстро наскучило и я понял, что нужно идти дальше.
+            </PageText>
+            <PageText active={this.state.page === 9 && true}>
+              На данный момент я открыт для предложений.
+            </PageText>
+          </AboutRowTexts>
+          <Pagination>
+            <PaginationBtn data-action="reduce" onClick={this.handlePagination}>
+              {"<"}
+            </PaginationBtn>
+            <Dot
+              data-state={1}
+              active={this.state.page <= 3}
+              onClick={this.handleDot}
+            ></Dot>
+            <Dot
+              data-state={4}
+              active={this.state.page <= 6 && this.state.page > 3}
+              onClick={this.handleDot}
+            ></Dot>
+            <Dot
+              data-state={7}
+              active={this.state.page > 6}
+              onClick={this.handleDot}
+            ></Dot>
+            <PaginationBtn
+              data-action="increase"
+              onClick={this.handlePagination}
+            >
+              {">"}
+            </PaginationBtn>
+          </Pagination>
         </About>
       </HomePageContainer>
     );
   }
 }
 const HomePageContainer = styled.div`
-  width: 1280px;
-  margin: 0 auto;
-  margin-top: 40px;
+  background: url(${Bg}) 0 0 / cover no-repeat;
 `;
 const About = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  border: 1px solid red;
-  padding: 20px 200px;
+  flex-direction: column;
+  align-content: center;
+  padding: 0 200px;
+  height: 100vh;
+  width: 1280px;
+  margin: 0 auto;
 `;
-const AboutRightCol = styled.div`
-  padding: 8px 10px;
-  border: 1px solid grey;
-  margin-left: 120px;
+const widthGrow = keyframes`
+	from{
+		transform: scale3d(0, 1, 1);
+	}
+	to{
+		transform: scale3d(1, 1, 1);
+	}
 `;
-const ImgMe = styled.img``;
+const AboutGreeting = styled.h2`
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
+  color: #dcf1ff;
+  text-transform: uppercase;
+  transform-origin: 0 100%;
+  animation: ${widthGrow} 0.5s both 0.3s;
+`;
 
-const AboutLeftCol = styled.div``;
-
+const fadeIn = keyframes`
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+`;
 const PageText = styled.p`
+  text-align: center;
   display: ${props => (props.active === true ? "block" : "none")};
+  animation: ${fadeIn} 0.5s both;
 `;
-const AboutLeftColTexts = styled.div`
+const AboutRowTexts = styled.div`
   display: flex;
-  align-items: center;
-  min-height: 400px;
-  width: 300px;
+  min-height: 120px;
+  width: 600px;
+  padding: 20px 50px;
+  margin-bottom: 40px;
+  justify-content: center;
+  color: #dcf1ff;
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 const Pagination = styled.div`
   margin-left: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const PaginationBtn = styled.button`
@@ -138,10 +178,15 @@ const PaginationBtn = styled.button`
   padding: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid grey;
-  background-color: transparent;
-  color: grey;
+  border: 1px solid #dcf1ff;
+  color: #dcf1ff;
   margin-left: 10px;
+  background-color: ${props =>
+    props.active === true ? "#dcf1ff" : "transparent"};
+  :focus {
+    outline: none;
+    border-color: orange;
+  }
 `;
 const Dot = styled(PaginationBtn)`
   width: 10px;
