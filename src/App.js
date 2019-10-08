@@ -25,7 +25,7 @@ class App extends Component {
 				
         <NavCase state={this.state.isOpen}>
           <Navbar></Navbar>
-					<Plate src={Inprgrs} alt="in progress" width="512" height="227"></Plate>
+					<Plate src={Inprgrs} alt="in progress" width="256" height="113"></Plate>
         </NavCase>
         <NavToggle onClick={this.toggleNav}>{this.state.isOpen? "Hide navigation": "Show navigation"}</NavToggle>
         <Switch>
