@@ -2,13 +2,17 @@ import React from "react";
 import SelectType from "./selectType";
 import styled from "styled-components";
 
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValues: ["", "", "", ""]
-    };
+      inputValues: {
+        dept: "",
+        dest: "",
+        today: "",
+        recomendedBackDate: ""
+      }
+		};
   }
   componentDidMount() {
     /* TODO */
@@ -16,7 +20,12 @@ class Search extends React.Component {
     let currentDate = "2019-09-27";
     let geoCity = "Москва";
     let newVals = this.state.inputValues;
-    newVals = [geoCity, "", currentDate, recomendedBackDate];
+    newVals = {
+      ...newVals,
+      dept: geoCity,
+      today: currentDate,
+      recomendedBackDate
+    };
     this.setState({
       inputValues: newVals
     });
@@ -31,8 +40,13 @@ class Search extends React.Component {
     console.log(this.state.inputValues);
   };
   handleSwap = () => {
-    const newVals = [this.state.inputValues[1], this.state.inputValues[0]];
-    newVals.push(this.state.inputValues[2], this.state.inputValues[3]);
+		let newVals = this.state.inputValues;
+		newVals = {
+			...this.state.inputValues,
+			dept: this.state.inputValues.dest,
+			dest: this.state.inputValues.dept
+		}
+    console.log(newVals);
     this.setState({ inputValues: newVals });
   };
   handleSubmit = e => {
@@ -40,40 +54,38 @@ class Search extends React.Component {
   };
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <InputsWrapper>
           <MainInputWrapper>
             <MainSearchInputs
               type="text"
               placeholder={"Откуда"}
               data-pos={0}
-              value={this.state.inputValues[0]}
+              value={this.state.inputValues.dept}
               onChange={this.handleInputChange}
             />
-            <CityCode>{this.state.inputValues[0]}</CityCode>
-            <Swap onClick={this.handleSwap} />
           </MainInputWrapper>
+          <Swap onClick={this.handleSwap} />
           <MainInputWrapper>
             <MainSearchInputs
               type="text"
               placeholder={"Куда"}
               data-pos={1}
-              value={this.state.inputValues[1]}
+              value={this.state.inputValues.dest}
               onChange={this.handleInputChange}
             />
-            <CityCode>{this.state.inputValues[1]}</CityCode>
           </MainInputWrapper>
 
           <MainSearchInputs
             type="date"
             data-pos={2}
-            value={this.state.inputValues[2]}
+            value={this.state.inputValues.today}
             onChange={this.handleInputChange}
           />
           <MainSearchInputs
             type="date"
             data-pos={3}
-            value={this.state.inputValues[3]}
+            value={this.state.inputValues.recomendedBackDate}
             onChange={this.handleInputChange}
           />
           <SelectType
@@ -145,8 +157,7 @@ const Swap = styled.div`
   width: 16px;
   height: 16px;
   border: 1px solid red;
-  top: calc(50% - 8px);
-  right: -9px;
+  top: 50%;
   border-radius: 15px;
   transform-origin: 50% 50%;
   cursor: pointer;
@@ -159,11 +170,6 @@ const MainInputWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-`;
-const CityCode = styled.span`
-  position: absolute;
-  color: grey;
-  left: 0;
 `;
 
 export default Search;
