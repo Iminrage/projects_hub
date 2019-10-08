@@ -12,7 +12,7 @@ import Inprgrs from "./components/img/inprogress.png";
 
 class App extends Component {
   state = {
-    isOpen: true
+    isOpen: false
   };
   toggleNav = () => {
     console.log(this.state.isOpen);
