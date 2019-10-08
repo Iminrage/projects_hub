@@ -24,7 +24,7 @@ class App extends Component {
         <NavCase state={this.state.isOpen}>
           <Navbar></Navbar>
         </NavCase>
-        <NavToggle onClick={this.toggleNav}>X</NavToggle>
+        <NavToggle onClick={this.toggleNav}>{this.state.isOpen? "Hide navigation": "Show navigation"}</NavToggle>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -53,9 +53,12 @@ const NavCase = styled.div`
 const NavToggle = styled.button`
   position: fixed;
   top: 100px;
-  right: 100px;
-  border: 1px solid red;
-  width: 20px;
-  height: 20px;
+	right: 100px;
+	padding: 5px;
+	margin: 0;
+	color: lightgrey;
+	border: 1px solid grey;
+	box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+	background: #50757e;
 `;
 export default App;
