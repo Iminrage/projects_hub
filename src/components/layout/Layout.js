@@ -10,7 +10,8 @@ const Task3Wrapper = styled.div`
   width: 960px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+	flex-direction: column;
+	overflow: auto;
 `;
 const ContentContainer = styled.div`
   flex: 1 0 auto;
