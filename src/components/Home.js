@@ -57,7 +57,7 @@ class Home extends Component {
               Я не случайно выбрал frontend, как направление своего развития.
             </PageText>
             <PageText active={this.state.page === 5 && true} onClick={()=>{clearInterval(this.interval)}}>
-              Моя мать сколько я себя помню работала в этой сфере и поэтому уже
+              Моя мама, сколько я себя помню, работала в этой сфере и поэтому уже
               на стадии изучения мне выпадала возможность верстать реальные
               коммерческие проекты.
             </PageText>
@@ -68,7 +68,7 @@ class Home extends Component {
             </PageText>
             <PageText active={this.state.page === 7 && true} onClick={()=>{clearInterval(this.interval)}}>
               Вернувшись в строй через 4 месяца быстро стало понятно, что на
-              простой верстке далеко не уедешь, Так я начал изучать JS.
+              простой верстке далеко не уедешь. Так я начал изучать JS.
             </PageText>
             <PageText active={this.state.page === 8 && true} onClick={()=>{clearInterval(this.interval)}}>
               Быстро нашел стажировку в{" "}
