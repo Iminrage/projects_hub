@@ -7,7 +7,8 @@ import Navbar from "./components/Navbar";
 import Layout from "./components/layout/Layout";
 import Home from "./components/Home";
 import AviasalesApp from "./components/aviasalesDemo/AviasalesApp";
-import { blockParams } from "handlebars";
+import Inprgrs from "./components/img/inprogress.png";
+
 
 class App extends Component {
   state = {
@@ -21,8 +22,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+				
         <NavCase state={this.state.isOpen}>
           <Navbar></Navbar>
+					<Plate src={Inprgrs} alt="in progress" width="512" height="227"></Plate>
         </NavCase>
         <NavToggle onClick={this.toggleNav}>{this.state.isOpen? "Hide navigation": "Show navigation"}</NavToggle>
         <Switch>
@@ -49,7 +52,11 @@ class App extends Component {
 const NavCase = styled.div`
   display: ${props => (props.state == 1 ? "block" : "none")};
 `;
-
+const Plate = styled.img`
+position: absolute;
+top: 100px;
+opacity: 0.5;
+`;
 const NavToggle = styled.button`
   position: fixed;
   top: 100px;
