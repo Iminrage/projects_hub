@@ -5,167 +5,7 @@ import Green from "./img/green.png";
 import styled from "styled-components";
 import Foot from "./img/foot.png";
 
-const Task3Wrapper = styled.div`
-  min-height: 100vh;
-  width: 960px;
-  margin: 0 auto;
-  display: flex;
-	flex-direction: column;
-	overflow: auto;
-`;
-const ContentContainer = styled.div`
-  flex: 1 0 auto;
-`;
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  padding: 24px 0 19px;
-  border-bottom: 1px solid #777777;
-`;
-const HeaderBlankItem = styled.div`
-  margin-left: 23px;
-  flex-grow: 1;
-  flex-shrink: 0;
-  min-height: 108px;
-  width: 279px;
-  background-color: #777777;
-`;
-const HeaderContacts = styled(HeaderBlankItem)`
-  width: 513px;
-`;
-const ContactsUl = styled.ul`
-  margin: 0;
-  padding: 22px;
-  text-align: right;
-`;
-const Li = styled.li`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
-const A = styled.a`
-  text-decoration: none;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14;
-  line-height: 22px;
-`;
-const ImgLogo = styled.img`
-  align-self: flex-start;
-`;
-
-const Main = styled.main`
-  flex: 1 0 auto;
-  padding: 22px 0;
-  border-bottom: 1px solid #777777;
-  margin-bottom: 23px;
-`;
-const MainWrapper = styled.div`
-  display: flex;
-`;
-const Aside = styled.aside`
-  margin-right: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-const ImgSixWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-bottom: 18px;
-`;
-const ImgSix = styled.img`
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin: 10px;
-`;
-
-const Menu = styled.div`
-  width: 184px;
-  background-color: #777777;
-  margin-bottom: 20px;
-`;
-const MenuUl = styled.ul`
-  margin: 0;
-  padding: 20px 14px;
-  text-align: left;
-  box-sizing: border-box;
-`;
-const BoldLi = styled(Li)`
-  font-weight: 600;
-`;
-
-const Task = styled.div`
-  padding: 22px;
-  margin-bottom: 19px;
-  background-color: #dcdcdc;
-`;
-
-const TaskText = styled.div`
-  margin: 0;
-`;
-
-const MainContentWrapper = styled.div``;
-
-const AboutWrapper = styled.div`
-  display: flex;
-  margin-left: -17px;
-`;
-const About = styled.div`
-  background-color: #dcdcdc;
-  width: 370px;
-  margin-left: 17px;
-  padding: 23px;
-  box-sizing: border-box;
-`;
-const AboutText = styled.p`
-  margin: 0;
-`;
-const Footer = styled.footer`
-  flex: 0 0 auto;
-  width: 100%;
-	display: flex;
-	padding-bottom: 25px;
-`;
-const FooterList = styled.div`
-	width: 298px;
-	margin-right: 28px;
-	background-color: #777777;
-`;
-const FooterListCol = styled(FooterList)`
-	
-`;
-const FooterListRow = styled(FooterList)`
-
-`;
-const FooterUlRow = styled.ul`
-  margin: 0;
-	padding: 14px 20px;
-
-	display: flex;
-	flex-direction: row;
-`;
-const FooterUlCol = styled.ul`
-  margin: 0;
-	padding: 14px 20px;
-	flex-basis: 180px;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: flex-start;
-`;
-
-const ColLi = styled(Li)`
-`;
-
-const RowLi = styled(Li)`
-
-`;
 
 function Task3() {
   return (
@@ -433,5 +273,164 @@ function Task3() {
     </Task3Wrapper>
   );
 }
+
+const Task3Wrapper = styled.div`
+  min-height: 100vh;
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+	flex-direction: column;
+	overflow: auto;
+`;
+const ContentContainer = styled.div`
+  flex: 1 0 auto;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0 19px;
+  border-bottom: 1px solid #777777;
+`;
+const HeaderBlankItem = styled.div`
+  margin-left: 23px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  min-height: 108px;
+  width: 279px;
+  background-color: #777777;
+`;
+const HeaderContacts = styled(HeaderBlankItem)`
+  width: 513px;
+`;
+const ContactsUl = styled.ul`
+  margin: 0;
+  padding: 22px;
+  text-align: right;
+`;
+const Li = styled.li`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+const A = styled.a`
+  text-decoration: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14;
+  line-height: 22px;
+`;
+const ImgLogo = styled.img`
+  align-self: flex-start;
+`;
+
+const Main = styled.main`
+  flex: 1 0 auto;
+  padding: 22px 0;
+  border-bottom: 1px solid #777777;
+  margin-bottom: 23px;
+`;
+const MainWrapper = styled.div`
+  display: flex;
+`;
+const Aside = styled.aside`
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const ImgSixWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-bottom: 18px;
+`;
+const ImgSix = styled.img`
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 10px;
+`;
+
+const Menu = styled.div`
+  width: 184px;
+  background-color: #777777;
+  margin-bottom: 20px;
+`;
+const MenuUl = styled.ul`
+  margin: 0;
+  padding: 20px 14px;
+  text-align: left;
+  box-sizing: border-box;
+`;
+const BoldLi = styled(Li)`
+  font-weight: 600;
+`;
+
+const Task = styled.div`
+  padding: 22px;
+  margin-bottom: 19px;
+  background-color: #dcdcdc;
+`;
+
+const TaskText = styled.div`
+  margin: 0;
+`;
+
+const MainContentWrapper = styled.div``;
+
+const AboutWrapper = styled.div`
+  display: flex;
+	justify-content: space-between;
+`;
+const About = styled.div`
+  background-color: #dcdcdc;
+  width: 370px;
+  padding: 23px;
+  box-sizing: border-box;
+`;
+const AboutText = styled.p`
+  margin: 0;
+`;
+const Footer = styled.footer`
+  flex: 0 0 auto;
+  width: 100%;
+	display: flex;
+	padding-bottom: 25px;
+`;
+const FooterList = styled.div`
+	width: 298px;
+	margin-right: 28px;
+	background-color: #777777;
+`;
+const FooterListCol = styled(FooterList)`
+	
+`;
+const FooterListRow = styled(FooterList)`
+
+`;
+const FooterUlRow = styled.ul`
+  margin: 0;
+	padding: 14px 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+`;
+const FooterUlCol = styled.ul`
+  margin: 0;
+	padding: 14px 20px;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+`;
+
+const ColLi = styled(Li)`
+`;
+
+const RowLi = styled(Li)`
+	width: 100%;
+`;
 
 export default Task3;
