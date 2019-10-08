@@ -112,7 +112,7 @@ class Home extends Component {
   }
 }
 const HomePageContainer = styled.div`
-  background: url(${Bg}) 0 0 / cover no-repeat;
+  background: url(${Bg}) center center / cover no-repeat;
 `;
 const About = styled.div`
   display: flex;
