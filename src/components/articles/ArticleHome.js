@@ -53,7 +53,8 @@ const TextContent = styled.div``;
 const ExtraContent = styled.div``;
 const PostsWrapper = styled.div`
   width: 960px;
-  margin: 40px auto;
+  margin: 0 auto;
+	padding: 40px 0;
 `;
 
 export default connect(mapStateToProps)(Home);
