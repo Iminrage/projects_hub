@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-
+import { addComment } from "../../reducers/actions/postActions";
 
 class CreateComment extends Component {
   constructor(props) {
@@ -80,9 +80,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addComment: commentValues => {
-      dispatch({ type: "ADD_COMMENT", commentValues: commentValues });
-    }
+    addComment: (commentValues) => { dispatch(addComment(commentValues))}
   };
 };
 
