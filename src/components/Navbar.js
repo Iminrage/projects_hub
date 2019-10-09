@@ -22,7 +22,7 @@ class Navbar extends Component {
         <NavBg state={this.state.isOpen} focus={this.state.focus}/>
         <NavCase state={this.state.isOpen}>
           <Nav>
-            <Ul>
+            <Ul count={"none"}>
               <Li>
                 <Alink href="https://github.com/Iminrage/projects_hub">
                   GitHub
@@ -98,6 +98,7 @@ const Alink = styled.a`
 
 const NavCase = styled.div`
   position: fixed;
+	top: 0;
   right: 0;
   display: ${props => (props.state === true ? "block" : "none")};
 `;
@@ -112,11 +113,12 @@ const NavBg = styled.div`
   transform: ${(props) => props.state === false ? "scale3d(0.3, 0.3, 1)" : "scale3d(1, 1, 1)"};
   background: url(${navBtnBg}) 0 0 / cover no-repeat;
 	border-radius: 0 0 0 100%;
-	border: ${(props) => props.focus && "1px solid orange"}
+	border: ${(props) => props.focus && "1px solid orange"};
 `;
 const NavToggle = styled.button`
   position: fixed;
   padding: 20px;
+	top: 0;
   right: 0;
   margin: 0;
   margin-bottom: -3px;
