@@ -11,8 +11,6 @@ import AviasalesApp from "./components/aviasalesDemo/AviasalesApp";
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar></Navbar>
-
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/projects_hub/articles/" component={ArticleHome} />
@@ -25,6 +23,7 @@ const App = () => {
         <Route path="/projects_hub/layout" component={Layout} />
         <Route path="/projects_hub/:post_id" component={Article} />
       </Switch>
+      <Navbar></Navbar>
     </BrowserRouter>
   );
 };
