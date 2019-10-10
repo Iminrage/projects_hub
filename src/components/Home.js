@@ -39,43 +39,88 @@ class Home extends Component {
         <About>
           <AboutGreeting>Привет, я Егор Шевчук</AboutGreeting>
           <AboutRowTexts>
-            <PageText active={this.state.page === 1 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 1 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Я начинающий frontend разработчик!
             </PageText>
-            <PageText active={this.state.page === 2 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 2 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Я мечтаю вырасти в полноценного разработчика и уметь делать всякие
               крутые штуки. Последний год параллельно с завершением обучения в
               колледже (по направлению информационной безопасности) я стал
               изучать верстку.
             </PageText>
-            <PageText active={this.state.page === 3 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 3 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Сначала было совсем трудно и непонятно, но потом в голове стала
               формироваться общая картинка.
             </PageText>
-            <PageText active={this.state.page === 4 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 4 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Я не случайно выбрал frontend, как направление своего развития.
             </PageText>
-            <PageText active={this.state.page === 5 && true} onClick={()=>{clearInterval(this.interval)}}>
-              Моя мама, сколько я себя помню, работала в этой сфере и поэтому уже
-              на стадии изучения мне выпадала возможность верстать реальные
+            <PageText
+              active={this.state.page === 5 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
+              Моя мама, сколько я себя помню, работала в этой сфере и поэтому
+              уже на стадии изучения мне выпадала возможность верстать реальные
               коммерческие проекты.
             </PageText>
-            <PageText active={this.state.page === 6 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 6 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Так прошли мои первые 5-6 месяцев в сфере, но время шло, а на носу
               был диплом и прочие важные мероприятия на учебе, поэтому пришлось
               сделать перерыв.
             </PageText>
-            <PageText active={this.state.page === 7 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 7 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Вернувшись в строй через 4 месяца быстро стало понятно, что на
               простой верстке далеко не уедешь. Так я начал изучать JS.
             </PageText>
-            <PageText active={this.state.page === 8 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 8 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               Быстро нашел стажировку в{" "}
               <ALink href="https://onpoint.ru/">Onpoint</ALink>, где научился
               очень многому в короткие сроки, но узкое направление работы
               Onpoint мне быстро наскучило и я понял, что нужно идти дальше.
             </PageText>
-            <PageText active={this.state.page === 9 && true} onClick={()=>{clearInterval(this.interval)}}>
+            <PageText
+              active={this.state.page === 9 && true}
+              onClick={() => {
+                clearInterval(this.interval);
+              }}
+            >
               На данный момент я открыт для предложений.
             </PageText>
           </AboutRowTexts>
@@ -106,12 +151,34 @@ class Home extends Component {
             </PaginationBtn>
           </Pagination>
         </About>
+        <Hint>
+          <HintText>
+            Добро пожаловать в центр моих проектов!<br/>
+            Спасибо, что заглянули. Для перемещения по проектам откройте меню
+            навигации в правом верхнем углу и с помощью стрелок
+            выберите интересующий проект, и просто нажмите на ссылку.
+          </HintText>
+        </Hint>
       </HomePageContainer>
     );
   }
 }
 const HomePageContainer = styled.div`
   background: url(${Bg}) center center / cover no-repeat;
+`;
+const Hint = styled.div`
+  position: absolute;
+  top: 80%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+const HintText = styled.p`
+  color: #dcf1ff;
+  text-align: center;
+  width: 30%;
+  padding: 20px 0;
+  margin: 0 auto;
 `;
 const About = styled.div`
   display: flex;
@@ -155,10 +222,10 @@ const PageText = styled.p`
   animation: ${fadeIn} 0.5s both;
 `;
 const ALink = styled.a`
-	color: #dcf1ff;
-	:hover{
-		color: #acffaa;
-	}
+  color: #dcf1ff;
+  :hover {
+    color: #acffaa;
+  }
 `;
 const AboutRowTexts = styled.div`
   display: flex;
