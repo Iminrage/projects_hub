@@ -15,7 +15,6 @@ class Navbar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   handlePagination = e => {
-    clearInterval(this.interval);
     if (e.target.dataset.action === "increase") {
       let linkNum = this.state.linkNum + 1;
       linkNum > 5 && (linkNum = 1);
@@ -32,26 +31,46 @@ class Navbar extends Component {
         <NavCase state={this.state.isOpen}>
           <Nav state={this.state.isOpen}>
             <Ul count={"none"}>
-              <Li active={this.state.linkNum === 5}>
-                <Alink href="https://github.com/Iminrage/projects_hub">
-                  GitHub
-                </Alink>
-              </Li>
-              <Li active={this.state.linkNum === 1}>
+              <Li
+                active={this.state.linkNum === 1}
+                prev={this.state.linkNum - 1 === 1}
+                next={this.state.linkNum === 5}
+              >
                 <NewNavLink to="/projects_hub/">Home</NewNavLink>
               </Li>
-              <Li active={this.state.linkNum === 2}>
+              <Li
+                active={this.state.linkNum === 2}
+                prev={this.state.linkNum - 1 === 2}
+                next={this.state.linkNum + 1 === 2}
+              >
                 <NewNavLink to="/projects_hub/aviasales_demo/">
                   Aviasales Demo
                 </NewNavLink>
               </Li>
-              <Li active={this.state.linkNum === 3}>
+              <Li
+                active={this.state.linkNum === 3}
+                prev={this.state.linkNum - 1 === 3}
+                next={this.state.linkNum + 1 === 3}
+              >
                 <NewNavLink to="/projects_hub/articles/">
                   Article Home
                 </NewNavLink>
               </Li>
-              <Li active={this.state.linkNum === 4}>
+              <Li
+                active={this.state.linkNum === 4}
+                prev={this.state.linkNum - 1 === 4}
+                next={this.state.linkNum + 1 === 4}
+              >
                 <NewNavLink to="/projects_hub/layout">Layout</NewNavLink>
+              </Li>
+              <Li
+                active={this.state.linkNum === 5}
+                prev={this.state.linkNum === 1}
+                next={this.state.linkNum + 1 === 5}
+              >
+                <Alink href="https://github.com/Iminrage/projects_hub">
+                  GitHub
+                </Alink>
               </Li>
             </Ul>
             <NavBtnPrev data-action="reduce" onClick={this.handlePagination} />
@@ -78,26 +97,34 @@ const Nav = styled.nav`
   right: 0;
 `;
 const Ul = styled.ul`
-	position: absolute;
+  position: absolute;
   margin: 0;
-	padding: 0;
-	width: 150px;
-	top: 110px;
-	right: 40px;
-	transform: rotate(-45deg);
+  padding: 0;
+  width: 150px;
+  top: 120px;
+  right: 50px;
+  transform: rotate(-45deg);
 `;
 const Li = styled.li`
-  display: ${props => (props.active ? "inline-block" : "none")};
-	list-style: none;
-	font-size: 16px;
+  position: absolute;
+  display: ${props =>
+    props.active || props.prev || props.next ? "block" : "none"};
+  font-size: ${props =>
+    props.active? "16px" : "12px"};
+  color: ${props => (props.active ? "black" : "grey")};
+	top: ${props => props.prev && "-20px" || props.next && "25px"};
+	left: ${props => props.next && "10px" || props.prev && "10px"};
+	pointer-events: ${props => props.next || props.prev ? "none" : "auto"};
+  list-style: none;
 	padding: 0;
+	transition: .3s all;
 `;
 const NewNavLink = styled(NavLink)`
   display: block;
   padding: 0;
   border-radius: 100%;
   text-decoration: none;
-  color: black;
+  color: inherit;
   :hover {
     color: green;
   }
@@ -105,7 +132,7 @@ const NewNavLink = styled(NavLink)`
 const Alink = styled.a`
   display: block;
   text-decoration: none;
-  color: black;
+  color: inherit;
   :hover {
     color: green;
   }
@@ -121,17 +148,17 @@ const NavBtn = styled.button`
 `;
 const NavBtnPrev = styled(NavBtn)`
   top: 13px;
-	right: 209px;
-	width: 39px;
-	height: 66px;
-	background: url(${prev}) 0 0 / cover no-repeat; 
+  right: 209px;
+  width: 39px;
+  height: 66px;
+  background: url(${prev}) 0 0 / cover no-repeat;
 `;
 const NavBtnNext = styled(NavBtn)`
   top: 200px;
-	right: 39px;
-	width: 59px;
-	height: 43px;
-	background: url(${next}) 0 0 / cover no-repeat; 
+  right: 39px;
+  width: 59px;
+  height: 43px;
+  background: url(${next}) 0 0 / cover no-repeat;
 `;
 const NavCase = styled.div`
   position: fixed;
@@ -148,7 +175,7 @@ const NavCase = styled.div`
 `;
 const NavToggle = styled.button`
   position: fixed;
-  padding: 20px;
+  padding: 0 0 20px 20px;
   top: 0;
   right: 0;
   margin: 0;
