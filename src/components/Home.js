@@ -153,10 +153,13 @@ class Home extends Component {
         </About>
         <Hint>
           <HintText>
-            Добро пожаловать в центр моих проектов!<br/>
+            Добро пожаловать в центр моих проектов!
+            <br />
             Спасибо, что заглянули. Для перемещения по проектам откройте меню
-            навигации в правом верхнем углу и с помощью стрелок
-            выберите интересующий проект, и просто нажмите на ссылку.
+            навигации в правом верхнем углу и с помощью стрелок выберите
+            интересующий проект, и просто нажмите на ссылку.
+            <br />
+            <HintBText>Проекты находятся на стадии доработки</HintBText>
           </HintText>
         </Hint>
       </HomePageContainer>
@@ -179,6 +182,12 @@ const HintText = styled.p`
   width: 30%;
   padding: 20px 0;
   margin: 0 auto;
+`;
+const HintBText = styled.b`
+  color: brown;
+  display: inline-block;
+  padding-top: 10px;
+  text-transform: uppercase;
 `;
 const About = styled.div`
   display: flex;
