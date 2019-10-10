@@ -1,53 +1,67 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import navBg from "./img/nav_bg.png";
-import Inprgrs from "./img/inprogress.png";
-import navBtnBg from "./img/navbtnbg.png";
+import navBtnBg from "./img/btnBg.png";
+import navBg from "./img/navBg.png";
+import prev from "./img/arrowPrev.png";
+import next from "./img/arrowNext.png";
 
 class Navbar extends Component {
   state = {
-		isOpen: false,
-		focus: false
+    isOpen: false,
+    linkNum: 1
   };
   toggleNav = () => {
     this.setState({ isOpen: !this.state.isOpen });
-	};
-	toggleFocus = () =>{
-		this.setState({ focus: !this.state.focus });
-	}
+  };
+  handlePagination = e => {
+    clearInterval(this.interval);
+    if (e.target.dataset.action === "increase") {
+      let linkNum = this.state.linkNum + 1;
+      linkNum > 5 && (linkNum = 1);
+      this.setState({ linkNum: linkNum });
+    } else if (e.target.dataset.action === "reduce") {
+      let linkNum = this.state.linkNum - 1;
+      linkNum < 1 && (linkNum = 5);
+      this.setState({ linkNum: linkNum });
+    }
+  };
   render() {
     return (
       <div className="">
-        <NavBg state={this.state.isOpen} focus={this.state.focus}/>
         <NavCase state={this.state.isOpen}>
-          <Nav>
+          <Nav state={this.state.isOpen}>
             <Ul count={"none"}>
-              <Li>
+              <Li active={this.state.linkNum === 5}>
                 <Alink href="https://github.com/Iminrage/projects_hub">
                   GitHub
                 </Alink>
               </Li>
-              <Li>
+              <Li active={this.state.linkNum === 1}>
                 <NewNavLink to="/projects_hub/">Home</NewNavLink>
               </Li>
-              <Li>
+              <Li active={this.state.linkNum === 2}>
                 <NewNavLink to="/projects_hub/aviasales_demo/">
                   Aviasales Demo
                 </NewNavLink>
               </Li>
-              <Li>
+              <Li active={this.state.linkNum === 3}>
                 <NewNavLink to="/projects_hub/articles/">
                   Article Home
                 </NewNavLink>
               </Li>
-              <Li>
+              <Li active={this.state.linkNum === 4}>
                 <NewNavLink to="/projects_hub/layout">Layout</NewNavLink>
               </Li>
             </Ul>
+            <NavBtnPrev data-action="reduce" onClick={this.handlePagination} />
+            <NavBtnNext
+              data-action="increase"
+              onClick={this.handlePagination}
+            />
           </Nav>
         </NavCase>
-        <NavToggle state={this.state.isOpen} onClick={this.toggleNav} onFocus={this.toggleFocus}>
+        <NavToggle state={this.state.isOpen} onClick={this.toggleNav}>
           <Line state={this.state.isOpen}></Line>
           <Line del={this.state.isOpen}></Line>
           <Line state={this.state.isOpen}></Line>
@@ -58,77 +72,96 @@ class Navbar extends Component {
 }
 
 const Nav = styled.nav`
-  position: relative;
-  padding: 100px 100px;
+  display: ${props => (props.state === true ? "block" : "none")};
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 const Ul = styled.ul`
+	position: absolute;
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+	padding: 0;
+	width: 150px;
+	top: 110px;
+	right: 40px;
+	transform: rotate(-45deg);
 `;
 const Li = styled.li`
-  list-style: none;
-  padding: 0 10px;
+  display: ${props => (props.active ? "inline-block" : "none")};
+	list-style: none;
+	font-size: 16px;
+	padding: 0;
 `;
 const NewNavLink = styled(NavLink)`
-  display: inline-block;
-  padding: 10px 40px 10px 30px;
-  border: 1px solid gray;
+  display: block;
+  padding: 0;
+  border-radius: 100%;
   text-decoration: none;
-  color: white;
-  background-color: rgba(58, 58, 58, 0.5);
+  color: black;
   :hover {
-    background-color: rgba(58, 58, 58, 0.8);
-    color: #cbebff;
+    color: green;
   }
 `;
 const Alink = styled.a`
-  display: inline-block;
-  padding: 10px 40px 10px 30px;
-  border: 1px solid gray;
+  display: block;
   text-decoration: none;
-  color: white;
-  background-color: rgba(58, 58, 58, 0.5);
+  color: black;
   :hover {
-    background-color: rgba(58, 58, 58, 0.8);
-    color: #cbebff;
+    color: green;
   }
 `;
-
+const NavBtn = styled.button`
+  position: absolute;
+  border: none;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  box-shadow: none;
+`;
+const NavBtnPrev = styled(NavBtn)`
+  top: 13px;
+	right: 209px;
+	width: 39px;
+	height: 66px;
+	background: url(${prev}) 0 0 / cover no-repeat; 
+`;
+const NavBtnNext = styled(NavBtn)`
+  top: 200px;
+	right: 39px;
+	width: 59px;
+	height: 43px;
+	background: url(${next}) 0 0 / cover no-repeat; 
+`;
 const NavCase = styled.div`
   position: fixed;
-	top: 0;
-  right: 0;
-  display: ${props => (props.state === true ? "block" : "none")};
-`;
-const NavBg = styled.div`
-  position: absolute;
-  right: 0;
   top: 0;
-  width: 500px;
-  height: 500px;
+  right: 0;
+  width: 280px;
+  height: 280px;
   transform-origin: top right;
-	transition: 0.5s all;
-  transform: ${(props) => props.state === false ? "scale3d(0.3, 0.3, 1)" : "scale3d(1, 1, 1)"};
-  background: url(${navBtnBg}) 0 0 / cover no-repeat;
-	border-radius: 0 0 0 100%;
-	border: ${(props) => props.focus && "1px solid orange"};
+  transition: 0.5s all ease;
+  transform: ${props =>
+    props.state === false ? "rotate(180deg)" : "rotate(0)"};
+  background: url(${navBg}) 0 0 / cover no-repeat;
+  border-radius: 0 0 0 100%;
 `;
 const NavToggle = styled.button`
   position: fixed;
   padding: 20px;
-	top: 0;
+  top: 0;
   right: 0;
   margin: 0;
   margin-bottom: -3px;
   border: none;
-  border-radius: 100%;
+  border-radius: 0 0 0 100%;
   color: lightgrey;
-  background: transparent;
-	:focus{
-		outline: none;
-	}
+  width: 114px;
+  height: 114px;
+  background: url(${navBtnBg}) 0 0 / cover no-repeat;
+  :focus {
+    outline: none;
+  }
 `;
 
 const Line = styled.span`
