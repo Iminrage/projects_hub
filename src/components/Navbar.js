@@ -109,15 +109,14 @@ const Li = styled.li`
   position: absolute;
   display: ${props =>
     props.active || props.prev || props.next ? "block" : "none"};
-  font-size: ${props =>
-    props.active? "16px" : "12px"};
+  font-size: ${props => (props.active ? "16px" : "12px")};
   color: ${props => (props.active ? "black" : "grey")};
-	top: ${props => props.prev && "-20px" || props.next && "25px"};
-	left: ${props => props.next && "10px" || props.prev && "10px"};
-	pointer-events: ${props => props.next || props.prev ? "none" : "auto"};
+  top: ${props => (props.prev && "-20px") || (props.next && "25px")};
+  left: ${props => (props.next && "10px") || (props.prev && "10px")};
+  pointer-events: ${props => (props.next || props.prev ? "none" : "auto")};
   list-style: none;
-	padding: 0;
-	transition: .3s all;
+  padding: 0;
+  transition: 0.5s all;
 `;
 const NewNavLink = styled(NavLink)`
   display: block;
@@ -197,6 +196,7 @@ const Line = styled.span`
   height: 3px;
   background-color: #fff;
   display: ${props => (props.del === true ? "none" : "block")};
-  transform: ${props => props.state === true && "rotate(-45deg)"};
+	transform: ${props => props.state === true && "rotate(-45deg)"};
+	transition: .3s all;
 `;
 export default Navbar;
