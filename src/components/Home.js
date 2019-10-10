@@ -261,7 +261,8 @@ const PaginationBtn = styled.button`
   height: 40px;
   border: 1px solid #dcf1ff;
   color: #dcf1ff;
-  margin-left: 10px;
+	margin-left: 10px;
+	cursor: pointer;
   background-color: ${props =>
     props.active === true ? "#dcf1ff" : "transparent"};
   :focus {
