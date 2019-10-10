@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
-import Me from "./img/me.jpg";
 import Bg from "./img/bg.jpg";
 
 class Home extends Component {
