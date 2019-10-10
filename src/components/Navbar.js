@@ -143,20 +143,21 @@ const NavBtn = styled.button`
   width: 25px;
   height: 25px;
   background-color: transparent;
-  box-shadow: none;
+	box-shadow: none;
+	cursor: pointer;
 `;
 const NavBtnPrev = styled(NavBtn)`
   top: 13px;
   right: 209px;
   width: 39px;
-  height: 66px;
+	height: 66px;
   background: url(${prev}) 0 0 / cover no-repeat;
 `;
 const NavBtnNext = styled(NavBtn)`
   top: 200px;
   right: 39px;
   width: 59px;
-  height: 43px;
+	height: 43px;
   background: url(${next}) 0 0 / cover no-repeat;
 `;
 const NavCase = styled.div`
@@ -183,7 +184,8 @@ const NavToggle = styled.button`
   border-radius: 0 0 0 100%;
   color: lightgrey;
   width: 114px;
-  height: 114px;
+	height: 114px;
+	cursor: pointer;
   background: url(${navBtnBg}) 0 0 / cover no-repeat;
   :focus {
     outline: none;
