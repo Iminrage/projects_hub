@@ -8,6 +8,12 @@ import next from "./img/arrowNext.png";
 
 class Navbar extends Component {
   state = {
+    projects: [
+      { link: "/projects_hub/", title: "Home" },
+      { link: "/projects_hub/aviasales_demo/", title: "Aviasales Demo" },
+      { link: "/projects_hub/articles/", title: "Articles" },
+      { link: "/projects_hub/layout/", title: "Layout" }
+    ],
     isOpen: false,
     linkNum: 1
   };
@@ -17,11 +23,11 @@ class Navbar extends Component {
   handlePagination = e => {
     if (e.target.dataset.action === "increase") {
       let linkNum = this.state.linkNum + 1;
-      linkNum > 5 && (linkNum = 1);
+      linkNum > this.state.projects.length && (linkNum = 1);
       this.setState({ linkNum: linkNum });
     } else if (e.target.dataset.action === "reduce") {
       let linkNum = this.state.linkNum - 1;
-      linkNum < 1 && (linkNum = 5);
+      linkNum < 1 && (linkNum = this.state.projects.length);
       this.setState({ linkNum: linkNum });
     }
   };
@@ -30,48 +36,26 @@ class Navbar extends Component {
       <div className="">
         <NavCase state={this.state.isOpen}>
           <Nav state={this.state.isOpen}>
-            <Ul count={"none"}>
-              <Li
-                active={this.state.linkNum === 1}
-                prev={this.state.linkNum - 1 === 1}
-                next={this.state.linkNum === 5}
-              >
-                <NewNavLink to="/projects_hub/">Home</NewNavLink>
-              </Li>
-              <Li
-                active={this.state.linkNum === 2}
-                prev={this.state.linkNum - 1 === 2}
-                next={this.state.linkNum + 1 === 2}
-              >
-                <NewNavLink to="/projects_hub/aviasales_demo/">
-                  Aviasales Demo
-                </NewNavLink>
-              </Li>
-              <Li
-                active={this.state.linkNum === 3}
-                prev={this.state.linkNum - 1 === 3}
-                next={this.state.linkNum + 1 === 3}
-              >
-                <NewNavLink to="/projects_hub/articles/">
-                  Article Home
-                </NewNavLink>
-              </Li>
-              <Li
-                active={this.state.linkNum === 4}
-                prev={this.state.linkNum - 1 === 4}
-                next={this.state.linkNum + 1 === 4}
-              >
-                <NewNavLink to="/projects_hub/layout">Layout</NewNavLink>
-              </Li>
-              <Li
-                active={this.state.linkNum === 5}
-                prev={this.state.linkNum === 1}
-                next={this.state.linkNum + 1 === 5}
-              >
-                <Alink href="https://github.com/Iminrage/projects_hub">
-                  GitHub
-                </Alink>
-              </Li>
+            <Ul>
+              {this.state.projects.map((project, idx) => {
+                return (
+                  <Li
+                    active={this.state.linkNum === idx + 1}
+                    next={
+                      idx + 1 === 1
+                        ? this.state.linkNum === this.state.projects.length
+                        : this.state.linkNum + 1 === idx + 1
+                    }
+                    prev={
+                      idx + 1 === this.state.projects.length
+                        ? this.state.linkNum === 1
+                        : this.state.linkNum - 1 === idx + 1
+                    }
+                  >
+                    {<NewNavLink to={project.link}>{project.title}</NewNavLink>}
+                  </Li>
+                );
+              })}
             </Ul>
             <NavBtnPrev data-action="reduce" onClick={this.handlePagination} />
             <NavBtnNext
@@ -143,21 +127,21 @@ const NavBtn = styled.button`
   width: 25px;
   height: 25px;
   background-color: transparent;
-	box-shadow: none;
-	cursor: pointer;
+  box-shadow: none;
+  cursor: pointer;
 `;
 const NavBtnPrev = styled(NavBtn)`
   top: 13px;
   right: 209px;
   width: 39px;
-	height: 66px;
+  height: 66px;
   background: url(${prev}) 0 0 / cover no-repeat;
 `;
 const NavBtnNext = styled(NavBtn)`
   top: 200px;
-  right: 39px;
+  right: 13px;
   width: 59px;
-	height: 43px;
+  height: 43px;
   background: url(${next}) 0 0 / cover no-repeat;
 `;
 const NavCase = styled.div`
@@ -184,8 +168,8 @@ const NavToggle = styled.button`
   border-radius: 0 0 0 100%;
   color: lightgrey;
   width: 114px;
-	height: 114px;
-	cursor: pointer;
+  height: 114px;
+  cursor: pointer;
   background: url(${navBtnBg}) 0 0 / cover no-repeat;
   :focus {
     outline: none;
@@ -198,7 +182,7 @@ const Line = styled.span`
   height: 3px;
   background-color: #fff;
   display: ${props => (props.del === true ? "none" : "block")};
-	transform: ${props => props.state === true && "rotate(-45deg)"};
-	transition: .3s all;
+  transform: ${props => props.state === true && "rotate(-45deg)"};
+  transition: 0.3s all;
 `;
 export default Navbar;
