@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import navBtnBg from "./img/btnBg.png";
-import navBg from "./img/navBg.png";
 import prev from "./img/arrowPrev.png";
 import next from "./img/arrowNext.png";
 
@@ -154,7 +152,7 @@ const NavCase = styled.div`
   transition: 0.5s all ease;
   transform: ${props =>
     props.state === false ? "rotate(180deg)" : "rotate(0)"};
-  background: url(${navBg}) 0 0 / cover no-repeat;
+	background: #b4e2ff;
   border-radius: 0 0 0 100%;
 `;
 const NavToggle = styled.button`
@@ -170,7 +168,7 @@ const NavToggle = styled.button`
   width: 114px;
   height: 114px;
   cursor: pointer;
-  background: url(${navBtnBg}) 0 0 / cover no-repeat;
+	background: #000;
   :focus {
     outline: none;
   }
