@@ -211,7 +211,8 @@ const AboutGreeting = styled.h2`
   margin: 0;
   margin-bottom: 40px;
   padding: 0;
-  color: #dcf1ff;
+	color: #dcf1ff;
+	font-family: "PT Sans Bold", sans-serif;
   text-transform: uppercase;
   transform-origin: 0 100%;
   animation: ${widthGrow} 0.5s both 0.3s;
