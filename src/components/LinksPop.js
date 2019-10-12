@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Hh from "./img/hh.png";
 import Gh from "./img/gh.png";
 import Tg from "./img/tg.png";
 import Mail from "./img/mail.png";
-
 
 class LinksPop extends Component {
   state = {
@@ -21,30 +20,44 @@ class LinksPop extends Component {
         img: Hh
       },
       { link: "mailto:efolkaras@gmail.com", title: "Email", img: Mail }
-		],
-		isOpen: false,
-	};
-	handleToggle = () => {
-		this.setState({isOpen: !this.state.isOpen})
-	}
+    ],
+    isOpen: false
+  };
+  handleToggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+  handleEnter = () => {
+    this.setState({ isOpen: true });
+  };
+  handleLeave = () => {
+    this.setState({ isOpen: false });
+  };
   render() {
     return (
-      <LinkPop>
+      <LinkPop
+        opened={this.state.isOpen}
+        onMouseEnter={this.handleEnter}
+        onMouseLeave={this.handleLeave}
+      >
         <nav>
           <Ul>
             {this.state.links.map((link, idx) => {
               return (
                 <Li key={idx}>
                   <A href={link.link}>
-                    <Img src={link.img} alt={link.title} heigth="auto" width="50"/>
-                    <Span opened={this.state.isOpen}>{link.title}</Span>
+                    <Img
+                      src={link.img}
+                      alt={link.title}
+                      heigth="auto"
+                      width="50"
+                    />
+                    {<Span opened={this.state.isOpen}>{link.title}</Span>}
                   </A>
                 </Li>
               );
             })}
           </Ul>
         </nav>
-				<NavToggle onClick={this.handleToggle} opened={this.state.isOpen}>{"<"}</NavToggle>
       </LinkPop>
     );
   }
@@ -52,19 +65,15 @@ class LinksPop extends Component {
 
 const LinkPop = styled.div`
   position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	background-color: rgba(180,226,255,0.7);
-	border-radius: 0 5px 5px 0;
-	padding: 20px 15px 20px 15px;
-`;
-const NavToggle = styled.button`
-	position: absolute;
-	top: 50%;
-	right: -10px;
-	transform: translateY(-50%);
-	border: none;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: ${props =>
+    props.opened ? "rgba(31, 114, 167, 0.9)" : "rgba(180, 226, 255, 0.7)"};
+  width: ${props => (props.opened ? "200px" : "50px")};
+  border-radius: 0 5px 5px 0;
+  padding: 20px 15px 20px 15px;
+  transition: 0.3s all;
 `;
 const Ul = styled.ul`
   margin: 0;
@@ -72,18 +81,35 @@ const Ul = styled.ul`
 `;
 const Li = styled.li`
   margin: 0;
-  padding: 0;
+  padding: 5px 0;
   list-style: none;
 `;
 const A = styled.a`
-	display: block;
+  display: flex;
   margin: 0;
   padding: 0;
-	text-decoration: none;
+  text-decoration: none;
+  align-items: center;
+  color: #dcf1ff;
+  :hover {
+    transition: 0.3s all;
+    box-shadow: 9px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  }
 `;
 const Img = styled.img``;
+const fadeIn = keyframes`
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+`;
 const Span = styled.span`
-	display: ${props => props.opened === true? "inlien-block":"none"};
+  display: ${props => (props.opened === true ? "inline-block" : "none")};
+  transition: all 1s;
+  margin-left: 10px;
+  animation: ${fadeIn} 0.3s both 0.3s;
 `;
 
 export default LinksPop;
