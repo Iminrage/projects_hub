@@ -38,6 +38,7 @@ class Navbar extends Component {
               {this.state.projects.map((project, idx) => {
                 return (
                   <Li
+										key={idx}
                     active={this.state.linkNum === idx + 1}
                     next={
                       idx + 1 === 1
