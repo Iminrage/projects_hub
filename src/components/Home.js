@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
+import LinksPop from "./LinksPop";
 import Bg from "./img/bg.jpg";
 
 class Home extends Component {
@@ -162,6 +163,7 @@ class Home extends Component {
             <HintBText>Проекты находятся на стадии доработки</HintBText>
           </HintText>
         </Hint>
+				<LinksPop></LinksPop>
       </HomePageContainer>
     );
   }
@@ -275,5 +277,6 @@ const Dot = styled(PaginationBtn)`
   width: 10px;
   height: 10px;
 `;
+
 
 export default Home;
