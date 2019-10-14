@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71a0d3d83a6989664bbd42e6e6eaf7a6",
+    "revision": "35028e7771ab41bf6d07930cf84a0945",
     "url": "/projects_hub/index.html"
   },
   {
-    "revision": "4f229c446c38247c74cc",
+    "revision": "4aa7a01e90c0e58e0c60",
     "url": "/projects_hub/static/css/main.21c535e4.chunk.css"
   },
   {
-    "revision": "883a55f5150c9fec053c",
-    "url": "/projects_hub/static/js/2.5a2d1bd0.chunk.js"
+    "revision": "bd3b5880c5140d5adc0c",
+    "url": "/projects_hub/static/js/2.dff7f798.chunk.js"
   },
   {
-    "revision": "4f229c446c38247c74cc",
-    "url": "/projects_hub/static/js/main.a59a93d4.chunk.js"
+    "revision": "4aa7a01e90c0e58e0c60",
+    "url": "/projects_hub/static/js/main.4c2299f0.chunk.js"
   },
   {
     "revision": "8efe8f396acf6e05370e",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c7dd22b588ca841e83b5a04240d04795",
     "url": "/projects_hub/static/media/bg.c7dd22b5.jpg"
+  },
+  {
+    "revision": "de21c521290923ce4d447f6414cac6c0",
+    "url": "/projects_hub/static/media/earth.de21c521.png"
   },
   {
     "revision": "dd24e5cbdc77ae6eac2c09f96de0c293",
