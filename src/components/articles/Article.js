@@ -2,16 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import Commentary from "./Commentary";
-
-const PageWrapper = styled.div`
-  padding: 0 70px;
-`;
-const PostWrapper = styled.div`
-  padding: 0 50px;
-`;
-const PostHeading = styled.h3`
-  padding-left: 150px;
-`;
+import ArticlesHOC from "./HOC/ArticlesHOC";
 
 class Article extends Component {
   constructor(props) {
@@ -52,4 +43,11 @@ const mapPropsToState = (state, ownProps) => {
     post: state.posts.find(post => post.id === id)
   };
 };
-export default connect(mapPropsToState)(Article);
+
+const PageWrapper = styled.div`
+color: white;
+`;
+const PostWrapper = styled.div``;
+const PostHeading = styled.h3``;
+
+export default connect(mapPropsToState)(ArticlesHOC(Article));
