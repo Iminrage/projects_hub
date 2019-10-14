@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
-import Hh from "./img/hh.png";
-import Gh from "./img/gh.png";
-import Tg from "./img/tg.png";
-import Mail from "./img/mail.png";
+import Hh from "../img/hh.png";
+import Gh from "../img/gh.png";
+import Tg from "../img/tg.png";
+import Mail from "../img/mail.png";
 
 class LinksPop extends Component {
   state = {
@@ -91,9 +91,10 @@ const A = styled.a`
   text-decoration: none;
   align-items: center;
   color: #dcf1ff;
+	border-radius: 30px 0 0 30px;
   :hover {
     transition: 0.3s all;
-    box-shadow: 9px 0px 5px 0px rgba(0, 0, 0, 0.75);
+		box-shadow: 10px 10px 46px -6px rgba(0,0,0,0.75);
   }
 `;
 const Img = styled.img``;
