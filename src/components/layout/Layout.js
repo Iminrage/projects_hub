@@ -5,8 +5,6 @@ import Green from "./img/green.png";
 import styled from "styled-components";
 import Foot from "./img/foot.png";
 
-
-
 function Task3() {
   return (
     <Task3Wrapper>
@@ -233,7 +231,7 @@ function Task3() {
         </FooterList>
         <FooterList>
           <FooterUlRow>
-					<RowLi>
+            <RowLi>
               <A href="#">1</A>
             </RowLi>
             <RowLi>
@@ -279,8 +277,8 @@ const Task3Wrapper = styled.div`
   width: 960px;
   margin: 0 auto;
   display: flex;
-	flex-direction: column;
-	overflow: auto;
+  flex-direction: column;
+  overflow: auto;
 `;
 const ContentContainer = styled.div`
   flex: 1 0 auto;
@@ -383,7 +381,7 @@ const MainContentWrapper = styled.div``;
 
 const AboutWrapper = styled.div`
   display: flex;
-	justify-content: space-between;
+  justify-content: space-between;
 `;
 const About = styled.div`
   background-color: #dcdcdc;
@@ -397,40 +395,35 @@ const AboutText = styled.p`
 const Footer = styled.footer`
   flex: 0 0 auto;
   width: 100%;
-	display: flex;
-	padding-bottom: 25px;
+  display: flex;
+  padding-bottom: 25px;
 `;
 const FooterList = styled.div`
-	width: 298px;
-	margin-right: 28px;
-	background-color: #777777;
+  width: 298px;
+  margin-right: 28px;
+  background-color: #777777;
 `;
-const FooterListCol = styled(FooterList)`
-	
-`;
-const FooterListRow = styled(FooterList)`
-
-`;
+const FooterListCol = styled(FooterList)``;
+const FooterListRow = styled(FooterList)``;
 const FooterUlRow = styled.ul`
   margin: 0;
-	padding: 14px 20px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 const FooterUlCol = styled.ul`
   margin: 0;
-	padding: 14px 20px;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+  padding: 14px 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
 `;
 
-const ColLi = styled(Li)`
-`;
+const ColLi = styled(Li)``;
 
 const RowLi = styled(Li)`
-	width: 100%;
+  width: 100%;
 `;
 
 export default Task3;

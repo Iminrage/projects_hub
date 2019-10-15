@@ -91,10 +91,10 @@ const A = styled.a`
   text-decoration: none;
   align-items: center;
   color: #dcf1ff;
-	border-radius: 30px 0 0 30px;
+  border-radius: 30px 0 0 30px;
   :hover {
     transition: 0.3s all;
-		box-shadow: 10px 10px 46px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 46px -6px rgba(0, 0, 0, 0.75);
   }
 `;
 const Img = styled.img``;

@@ -43,7 +43,6 @@ const MainTitleSub = styled.p`
   color: #ffffff;
 `;
 
-
 class AviasalesApp extends React.Component {
   render() {
     return (
@@ -55,7 +54,7 @@ class AviasalesApp extends React.Component {
               <MainTitleSub>
                 Лучший способ купить авиабилеты дешево
               </MainTitleSub>
-              <Search/>
+              <Search />
             </SectSearchFlexWrapper>
           </SectSearch>
         </main>

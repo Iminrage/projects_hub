@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ArticlesHOC from "./HOC/ArticlesHOC";
 
-const Home = (props) =>{
+const Home = props => {
   console.log(props);
   const { posts } = props;
   const postsList = props.posts.length ? (
@@ -24,10 +24,8 @@ const Home = (props) =>{
   ) : (
     <div className="">No posts yet</div>
   );
-  return (
-        <PostsWrapper>{postsList}</PostsWrapper>
-  );
-}
+  return <PostsWrapper>{postsList}</PostsWrapper>;
+};
 
 const mapStateToProps = state => {
   return {
@@ -35,8 +33,7 @@ const mapStateToProps = state => {
   };
 };
 
-const PostsWrapper = styled.div`
-`;
+const PostsWrapper = styled.div``;
 const PostLinkWrapper = styled.div`
   margin-bottom: 30px;
 `;
@@ -48,8 +45,8 @@ const NewLink = styled(Link)`
   display: flex;
   text-decoration: none;
   border-bottom: 1px solid white;
-	transition: 0.3s all;
-	border-radius: 7px 7px 0 0;
+  transition: 0.3s all;
+  border-radius: 7px 7px 0 0;
   :hover {
     background-color: rgba(180, 226, 255, 0.1);
   }

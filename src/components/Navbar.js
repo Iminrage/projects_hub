@@ -5,16 +5,19 @@ import prev from "./img/arrowPrev.png";
 import next from "./img/arrowNext.png";
 
 class Navbar extends Component {
-  state = {
-    projects: [
-      { link: "/projects_hub/", title: "Home" },
-      { link: "/projects_hub/aviasales_demo/", title: "Aviasales Demo" },
-      { link: "/projects_hub/articles/", title: "Articles" },
-      { link: "/projects_hub/layout/", title: "Layout" }
-    ],
-    isOpen: false,
-    linkNum: 1
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: [
+        { link: "/projects_hub/", title: "Home" },
+        { link: "/projects_hub/aviasales_demo/", title: "Aviasales Demo" },
+        { link: "/projects_hub/articles/", title: "Articles" },
+        { link: "/projects_hub/layout/", title: "Layout" }
+      ],
+      isOpen: false,
+      linkNum: 1
+    };
+  }
   toggleNav = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
@@ -22,7 +25,8 @@ class Navbar extends Component {
     if (e.target.dataset.action === "increase") {
       let linkNum = this.state.linkNum + 1;
       linkNum > this.state.projects.length && (linkNum = 1);
-      this.setState({ linkNum: linkNum });
+      this.setState({ linkNum: linkNum }
+      );
     } else if (e.target.dataset.action === "reduce") {
       let linkNum = this.state.linkNum - 1;
       linkNum < 1 && (linkNum = this.state.projects.length);
@@ -38,7 +42,7 @@ class Navbar extends Component {
               {this.state.projects.map((project, idx) => {
                 return (
                   <Li
-										key={idx}
+                    key={idx}
                     active={this.state.linkNum === idx + 1}
                     next={
                       idx + 1 === 1
@@ -153,7 +157,7 @@ const NavCase = styled.div`
   transition: 0.5s all ease;
   transform: ${props =>
     props.state === false ? "rotate(180deg)" : "rotate(0)"};
-	background: #b4e2ff;
+  background: #b4e2ff;
   border-radius: 0 0 0 100%;
 `;
 const NavToggle = styled.button`
@@ -169,7 +173,7 @@ const NavToggle = styled.button`
   width: 114px;
   height: 114px;
   cursor: pointer;
-	background: #000;
+  background: #000;
   :focus {
     outline: none;
   }

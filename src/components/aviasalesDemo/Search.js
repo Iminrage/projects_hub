@@ -171,8 +171,8 @@ const Swap = styled.div`
   }
 `;
 const SwapArrow = styled.span`
-	display: block;
-	user-select: none;
+  display: block;
+  user-select: none;
 `;
 const SwapArrowR = styled(SwapArrow)``;
 const SwapArrowL = styled(SwapArrow)``;

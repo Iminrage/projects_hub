@@ -45,7 +45,7 @@ const mapPropsToState = (state, ownProps) => {
 };
 
 const PageWrapper = styled.div`
-color: white;
+  color: white;
 `;
 const PostWrapper = styled.div``;
 const PostHeading = styled.h3``;

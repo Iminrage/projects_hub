@@ -32,10 +32,10 @@ const NewLink = styled(Link)`
   transition: 0.3s all;
   border-radius: 10px 10px 0 0;
   color: white;
-	text-decoration: none;
-	border-bottom: 1px solid rgba(255,255,255,0);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
   :hover {
-    border-bottom: 1px solid rgba(255,255,255,1);
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
   }
 `;
 const Logo = styled.img``;

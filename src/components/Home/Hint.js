@@ -3,11 +3,7 @@ import HintPop from "./HintPop";
 import styled from "styled-components";
 
 const Hint = () => {
-  return (
-    <HintWrapper>
-      
-    </HintWrapper>
-  );
+  return <HintWrapper></HintWrapper>;
 };
 const HintWrapper = styled.div``;
 const HintText = styled.p`

@@ -1,14 +1,14 @@
 [
-	{
-		"post_id": "4",
-		"com_id": "1",
-		"author": "Admin",
-		"body": "I love pandas so much!!!"
-	},
-	{
-		"post_id": "4",
-		"com_id": "2",
-		"author": "Admin2",
-		"body": "I love pandas so much!!!2"
-	}
+  {
+    "post_id": "4",
+    "com_id": "1",
+    "author": "Admin",
+    "body": "I love pandas so much!!!"
+  },
+  {
+    "post_id": "4",
+    "com_id": "2",
+    "author": "Admin2",
+    "body": "I love pandas so much!!!2"
+  }
 ]

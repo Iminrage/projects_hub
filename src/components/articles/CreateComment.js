@@ -20,9 +20,9 @@ class CreateComment extends Component {
       const { commentValues } = this.state;
       let current = commentValues;
       current = {
-				...current,
-				com_id: nextProps.com_id,
-				author: "",
+        ...current,
+        com_id: nextProps.com_id,
+        author: "",
         body: ""
       };
       this.setState({ commentValues: current });
@@ -52,16 +52,15 @@ class CreateComment extends Component {
       <div className="">
         <Form onSubmit={this.handleSubmit}>
           <Input
-						type="text"
-						placeholder="Введите имя"
-						name="author"
+            type="text"
+            placeholder="Введите имя"
+            name="author"
             value={this.state.commentValues.author}
             onChange={this.handleInputChange}
           />
           <Input
-						name="body"
-						placeholder="Введите комментарий"
-
+            name="body"
+            placeholder="Введите комментарий"
             value={this.state.commentValues.body}
             onChange={this.handleInputChange}
           />
@@ -80,28 +79,29 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addComment: (commentValues) => { dispatch(addComment(commentValues))}
+    addComment: commentValues => {
+      dispatch(addComment(commentValues));
+    }
   };
 };
 
 const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;	
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const Input = styled.input`
-  width: ${(props) => props.name === "body" ? "350px" : "150px"}; 
-	border: none;
-	border-bottom: 1px solid grey;
-	margin-right: 20px;
-	padding: 10px 20px 10px 10px;
-	box-sizing: border-box;
-	position: relative;
-	:focus{
-	}
+  width: ${props => (props.name === "body" ? "350px" : "150px")};
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-right: 20px;
+  padding: 10px 20px 10px 10px;
+  box-sizing: border-box;
+  position: relative;
+  :focus {
+  }
 `;
-
 
 export default connect(
   mapStateToProps,

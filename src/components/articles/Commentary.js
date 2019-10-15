@@ -43,9 +43,7 @@ const AuthorName = styled.span`
 const ComText = styled.p`
   color: white;
 `;
-const ExistingComments = styled.div`
-
-`;
+const ExistingComments = styled.div``;
 
 const fadeInDown = keyframes`
 	from {
@@ -59,9 +57,9 @@ const fadeInDown = keyframes`
 `;
 
 const CommentarySection = styled.div`
-	opacity: 0;
-	transform-origin: 100% 0;
-	animation: ${fadeInDown} .3s both;
+  opacity: 0;
+  transform-origin: 100% 0;
+  animation: ${fadeInDown} 0.3s both;
 `;
 
 export default connect(mapStateToProps)(Commentary);
