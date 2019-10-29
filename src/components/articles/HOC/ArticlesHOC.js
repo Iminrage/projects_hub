@@ -53,13 +53,17 @@ const PageWrapper = styled.div`
 `;
 const ContentWrapper = styled.div`
   flex: 1 0 auto;
-`;
-const Main = styled.div`
-	position: relative;
+  display: flex;
+	flex-direction: column;
 `;
 const Header = styled.header`
   border-bottom: 1px solid white;
   padding: 20px 0;
+  flex: 0 0 auto;
+`;
+const Main = styled.div`
+  position: relative;
+  flex: 1 0 auto;
 `;
 const Container = styled.div`
   width: 960px;
