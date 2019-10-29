@@ -15,27 +15,54 @@ class Navbar extends Component {
         { link: "/projects_hub/layout/", title: "Layout" }
       ],
       isOpen: false,
-      linkNum: 1
+      linkNum: 0,
+      prevLink: 3,
+      nextLink: 1
     };
   }
   toggleNav = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
   handlePagination = e => {
+    const checker = (num, min, max) => {
+      if (num > max) {
+        return min;
+      } else if (num < min) {
+        return max;
+      } else return num;
+    };
+    let linkNum;
     if (e.target.dataset.action === "increase") {
-      let linkNum = this.state.linkNum + 1;
-      linkNum > this.state.projects.length && (linkNum = 1);
-      this.setState({ linkNum: linkNum }
+      linkNum = checker(
+        this.state.linkNum + 1,
+        0,
+        this.state.projects.length - 1
       );
     } else if (e.target.dataset.action === "reduce") {
-      let linkNum = this.state.linkNum - 1;
-      linkNum < 1 && (linkNum = this.state.projects.length);
-      this.setState({ linkNum: linkNum });
+      linkNum = checker(
+        this.state.linkNum - 1,
+        0,
+        this.state.projects.length - 1
+      );
     }
+    let nextLink = checker(
+      linkNum + 1,
+      0,
+      this.state.projects.length - 1
+    );
+    let prevLink = checker(
+      linkNum - 1,
+      0,
+      this.state.projects.length - 1
+    );
+    this.setState({ linkNum: linkNum, nextLink: nextLink, prevLink: prevLink }, ()=>{
+			console.log(prevLink, linkNum, nextLink);
+			
+		});
   };
   render() {
     return (
-      <div className="">
+      <NavWrapper>
         <NavCase state={this.state.isOpen}>
           <Nav state={this.state.isOpen}>
             <Ul>
@@ -43,17 +70,9 @@ class Navbar extends Component {
                 return (
                   <Li
                     key={idx}
-                    active={this.state.linkNum === idx + 1}
-                    next={
-                      idx + 1 === 1
-                        ? this.state.linkNum === this.state.projects.length
-                        : this.state.linkNum + 1 === idx + 1
-                    }
-                    prev={
-                      idx + 1 === this.state.projects.length
-                        ? this.state.linkNum === 1
-                        : this.state.linkNum - 1 === idx + 1
-                    }
+                    active={this.state.linkNum === idx}
+                    next={this.state.nextLink === idx}
+                    prev={this.state.prevLink === idx}
                   >
                     {<NewNavLink to={project.link}>{project.title}</NewNavLink>}
                   </Li>
@@ -72,11 +91,31 @@ class Navbar extends Component {
           <Line del={this.state.isOpen}></Line>
           <Line state={this.state.isOpen}></Line>
         </NavToggle>
-      </div>
+      </NavWrapper>
     );
   }
 }
-
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  @media (max-width: 640px) {
+    transform: scale(0.7);
+  }
+`;
+const NavCase = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  transform-origin: top right;
+  transition: 0.5s all ease;
+  transform: ${props =>
+    props.state === false ? "rotate(180deg)" : "rotate(0)"};
+  background: #b4e2ff;
+  border-radius: 0 0 0 100%;
+`;
 const Nav = styled.nav`
   display: ${props => (props.state === true ? "block" : "none")};
   position: absolute;
@@ -126,6 +165,7 @@ const Alink = styled.a`
 const NavBtn = styled.button`
   position: absolute;
   border: none;
+  display: block;
   padding: 0;
   width: 25px;
   height: 25px;
@@ -146,19 +186,6 @@ const NavBtnNext = styled(NavBtn)`
   width: 59px;
   height: 43px;
   background: url(${next}) 0 0 / cover no-repeat;
-`;
-const NavCase = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 280px;
-  height: 280px;
-  transform-origin: top right;
-  transition: 0.5s all ease;
-  transform: ${props =>
-    props.state === false ? "rotate(180deg)" : "rotate(0)"};
-  background: #b4e2ff;
-  border-radius: 0 0 0 100%;
 `;
 const NavToggle = styled.button`
   position: fixed;
