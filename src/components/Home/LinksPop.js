@@ -44,7 +44,7 @@ class LinksPop extends Component {
             {this.state.links.map((link, idx) => {
               return (
                 <Li key={idx}>
-                  <A href={link.link}>
+                  <A href={link.link} target="_blank">
                     <Img
                       src={link.img}
                       alt={link.title}
@@ -74,15 +74,31 @@ const LinkPop = styled.div`
   border-radius: 0 5px 5px 0;
   padding: 20px 15px 20px 15px;
   transition: 0.3s all;
+	@media (max-width: 640px) {
+		top: auto;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 0;
+		width: auto;
+		padding: 5px 2px 3px 2px;
+		border-radius: 5px 5px 0 0;
+		background-color: rgba(31, 114, 167, 0.9);
+  }
 `;
 const Ul = styled.ul`
   margin: 0;
   padding: 0;
+	@media (max-width: 640px) {
+		display: flex;
+  }
 `;
 const Li = styled.li`
   margin: 0;
   padding: 5px 0;
   list-style: none;
+	@media (max-width: 640px) {
+		padding: 0 5px;
+  }
 `;
 const A = styled.a`
   display: flex;
@@ -111,6 +127,9 @@ const Span = styled.span`
   transition: all 1s;
   margin-left: 10px;
   animation: ${fadeIn} 0.3s both 0.3s;
+	@media (max-width: 640px) {
+		display: none;
+  }
 `;
 
 export default LinksPop;
