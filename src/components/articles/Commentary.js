@@ -53,12 +53,17 @@ const CommentarySection = styled.div`
 `;
 const AuthorName = styled.span`
   display: inline-block;
-  font-size: 34px;
+	color: white;
+  font-size: 18px;
 `;
 const ComText = styled.p`
   color: white;
+	font-size: 16px;
 `;
-const ExistingComments = styled.div``;
+const ExistingComments = styled.div`
+	padding: 20px 0;
+	margin: 5px 0;
+`;
 
 
 export default connect(mapStateToProps)(Commentary);
