@@ -50,7 +50,7 @@ class AviasalesApp extends React.Component {
         <main>
           <SectSearch>
             <SectSearchFlexWrapper className="sect-search__search-form">
-              <MainTitle>Поиск дешевых авиабилетов</MainTitle>
+              <MainTitle>Пока что сломаный<br/>Поиск дешевых авиабилетов</MainTitle>
               <MainTitleSub>
                 Лучший способ купить авиабилеты дешево
               </MainTitleSub>
