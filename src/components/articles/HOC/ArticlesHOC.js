@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import Earth from "../img/earth.png";
 import logo from "../img/logo.png";
+import ArticleHint from "./ArticleHint";
 
 const ArticlesApp = WrappedComponent => {
   return props => {
@@ -20,6 +21,7 @@ const ArticlesApp = WrappedComponent => {
             <PostsWrapper>
               <WrappedComponent {...props} />
             </PostsWrapper>
+            <ArticleHint />
           </Container>
         </ContentWrapper>
         <Footer></Footer>
