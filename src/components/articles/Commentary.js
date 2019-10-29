@@ -36,19 +36,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const AuthorName = styled.span`
-  display: inline-block;
-  font-size: 34px;
-`;
-const ComText = styled.p`
-  color: white;
-`;
-const ExistingComments = styled.div``;
-
 const fadeInDown = keyframes`
 	from {
 		transform: scale3d(1,0,1)
-		
   }
   to {
 		opacity: 1;
@@ -61,5 +51,14 @@ const CommentarySection = styled.div`
   transform-origin: 100% 0;
   animation: ${fadeInDown} 0.3s both;
 `;
+const AuthorName = styled.span`
+  display: inline-block;
+  font-size: 34px;
+`;
+const ComText = styled.p`
+  color: white;
+`;
+const ExistingComments = styled.div``;
+
 
 export default connect(mapStateToProps)(Commentary);
