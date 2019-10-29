@@ -199,37 +199,18 @@ const fadeIn = keyframes`
 `;
 const HomePageContainer = styled.div`
   background: url(${Bg}) center center / cover no-repeat;
+  padding: 0 400px;
+	@media (max-width: 1500px) {
+		padding: 0 200px;
+  }
+	@media (max-width: 1200px) {
+		padding: 0 100px;
+  }
+	@media (max-width: 640px) {
+		padding: 0 0;
+  }
 `;
-const Hint = styled.div`
-  display: ${props => (props.opened ? "block" : "none")};
-  position: absolute;
-  bottom: 10%;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transform-origin: left;
-  animation: ${fadeInUp} 0.5s both;
-`;
-const HintToggle = styled.button`
-  position: absolute;
-  bottom: 0;
-  right: 5%;
-  width: 30px;
-  height: 30px;
-`;
-const HintText = styled.p`
-  color: #dcf1ff;
-  text-align: center;
-  width: 30%;
-  padding: 20px 0;
-  margin: 0 auto;
-`;
-const HintBText = styled.b`
-  color: brown;
-  display: inline-block;
-  padding-top: 10px;
-  text-transform: uppercase;
-`;
+
 const About = styled.div`
   display: flex;
   justify-content: center;
@@ -247,13 +228,43 @@ const AboutGreeting = styled.h2`
   padding: 0;
   color: #dcf1ff;
   font-family: "PT Sans Bold", sans-serif;
+	font-size: 26px;
+	text-shadow: 2px 3px 6px rgba(0,0,0,0.63);
   text-transform: uppercase;
   transform-origin: 0 100%;
   animation: ${widthGrow} 0.5s both 0.3s;
+	@media (max-width: 640px) {
+		font-size: 18px;
+		margin-bottom: 15px;
+  }
 `;
 
+const AboutRowTexts = styled.div`
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 200px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  justify-content: center;
+	align-items: center;
+  color: #dcf1ff;
+  background-color: rgba(0, 0, 0, 0.2);
+	@media (max-width: 1500px) {
+		padding: 20px 100px;
+  }
+	@media (max-width: 1200px) {
+		padding: 10px 50px;
+  }
+	@media (max-width: 640px) {
+		padding: 10px 30px;
+		margin-bottom: 15px;
+  }
+	
+`;
 const PageText = styled.p`
   text-align: center;
+	text-shadow: 1px 1px 6px rgba(0,0,0,0.63);
   display: ${props => (props.active === true ? "block" : "none")};
   animation: ${fadeIn} 0.5s both;
 `;
@@ -262,16 +273,6 @@ const ALink = styled.a`
   :hover {
     color: #acffaa;
   }
-`;
-const AboutRowTexts = styled.div`
-  display: flex;
-  min-height: 120px;
-  width: 600px;
-  padding: 20px 50px;
-  margin-bottom: 40px;
-  justify-content: center;
-  color: #dcf1ff;
-  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 const Pagination = styled.div`
@@ -300,6 +301,37 @@ const PaginationBtn = styled.button`
 const Dot = styled(PaginationBtn)`
   width: 10px;
   height: 10px;
+`;
+const Hint = styled.div`
+  display: ${props => (props.opened ? "block" : "none")};
+	display: none;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform-origin: left;
+  animation: ${fadeInUp} 0.5s both;
+`;
+const HintToggle = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 30px;
+  height: 30px;
+`;
+const HintText = styled.p`
+  color: #dcf1ff;
+  text-align: center;
+  width: 30%;
+  padding: 20px 0;
+  margin: 0 auto;
+`;
+const HintBText = styled.b`
+  color: brown;
+  display: inline-block;
+  padding-top: 10px;
+  text-transform: uppercase;
 `;
 
 export default Home;
