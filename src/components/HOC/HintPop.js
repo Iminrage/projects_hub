@@ -7,7 +7,7 @@ const HintPop = WrappedComponent => {
     constructor(props) {
       super(props);
       this.state = {
-        hintIsOpen: true
+        hintIsOpen: false
       };
     }
     render() {
@@ -68,8 +68,8 @@ const HintText = styled.div`
 `;
 const HintToggle = styled.button`
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  top: 30px;
+  left: 30px;
   width: 40px;
   height: 40px;
   border: none;
@@ -78,8 +78,6 @@ const HintToggle = styled.button`
   @media (max-width: 640px) {
     top: 10px;
     left: 10px;
-    right: auto;
-    bottom: auto;
   }
 `;
 
