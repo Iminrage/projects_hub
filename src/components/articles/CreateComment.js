@@ -71,6 +71,27 @@ class CreateComment extends Component {
   }
 }
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const Input = styled.input`
+  width: ${props => (props.name === "body" ? "350px" : "150px")};
+  border: none;
+  border-bottom: 1px solid grey;
+  margin: 10px 0;
+  padding: 10px 20px 10px 10px;
+  box-sizing: border-box;
+  position: relative;
+  :focus {
+  }
+	@media (max-width: 420px) {
+		width: ${props => (props.name === "body" ? "250px" : "150px")};
+	}
+`;
+
 const mapStateToProps = state => {
   return {
     com_id: state.comments.length + 1
@@ -84,24 +105,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const Input = styled.input`
-  width: ${props => (props.name === "body" ? "350px" : "150px")};
-  border: none;
-  border-bottom: 1px solid grey;
-  margin-right: 20px;
-  padding: 10px 20px 10px 10px;
-  box-sizing: border-box;
-  position: relative;
-  :focus {
-  }
-`;
 
 export default connect(
   mapStateToProps,
