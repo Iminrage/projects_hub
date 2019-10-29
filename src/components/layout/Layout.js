@@ -71,7 +71,7 @@ function Task3() {
                   </Li>
                 </MenuUl>
               </Menu>
-              <img
+              <AsideImg
                 src={Green}
                 alt="Картинка разрешением в 184x134"
                 width="184"
@@ -198,75 +198,75 @@ function Task3() {
         <FooterList>
           <FooterUlCol>
             <ColLi>
-              <A href="#">1</A>
+              <A href="#">1. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">2</A>
+              <A href="#">2. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">3</A>
+              <A href="#">3. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">4</A>
+              <A href="#">4. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">5</A>
+              <A href="#">5. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">5</A>
+              <A href="#">5. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">7</A>
+              <A href="#">7. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">8</A>
+              <A href="#">8. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">9</A>
+              <A href="#">9. пункт</A>
             </ColLi>
             <ColLi>
-              <A href="#">10</A>
+              <A href="#">10. пункт</A>
             </ColLi>
           </FooterUlCol>
         </FooterList>
         <FooterList>
           <FooterUlRow>
             <RowLi>
-              <A href="#">1</A>
+              <A href="#">1. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">2</A>
+              <A href="#">2. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">3</A>
+              <A href="#">3. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">4</A>
+              <A href="#">4. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">5</A>
+              <A href="#">5. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">5</A>
+              <A href="#">5. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">7</A>
+              <A href="#">7. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">8</A>
+              <A href="#">8. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">9</A>
+              <A href="#">9. пункт</A>
             </RowLi>
             <RowLi>
-              <A href="#">10</A>
+              <A href="#">10. пункт</A>
             </RowLi>
           </FooterUlRow>
         </FooterList>
-        <div className="">
+        <FooterBlock>
           <div className=""></div>
-          <img src={Foot} alt="Картинка разрешением в 308x77" />
-        </div>
+          <FooterImg src={Foot} alt="Картинка разрешением в 308x77" />
+        </FooterBlock>
       </Footer>
     </Task3Wrapper>
   );
@@ -278,7 +278,13 @@ const Task3Wrapper = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  @media (max-width: 1024px) {
+    width: auto;
+    padding: 0 50px;
+  }
+	@media (max-width: 500px) {
+    padding: 0 10px;
+  }
 `;
 const ContentContainer = styled.div`
   flex: 1 0 auto;
@@ -289,6 +295,15 @@ const Header = styled.header`
   justify-content: space-between;
   padding: 24px 0 19px;
   border-bottom: 1px solid #777777;
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+`;
+const ImgLogo = styled.img`
+  align-self: flex-start;
+  @media (max-width: 1024px) {
+    margin: 5px;
+  }
 `;
 const HeaderBlankItem = styled.div`
   margin-left: 23px;
@@ -297,9 +312,17 @@ const HeaderBlankItem = styled.div`
   min-height: 108px;
   width: 279px;
   background-color: #777777;
+  @media (max-width: 1024px) {
+    flex-shrink: 1;
+    margin-left: 0;
+    margin: 5px;
+  }
 `;
 const HeaderContacts = styled(HeaderBlankItem)`
   width: 513px;
+  @media (max-width: 1024px) {
+    flex-basis: 513px;
+  }
 `;
 const ContactsUl = styled.ul`
   margin: 0;
@@ -318,9 +341,6 @@ const A = styled.a`
   font-size: 14;
   line-height: 22px;
 `;
-const ImgLogo = styled.img`
-  align-self: flex-start;
-`;
 
 const Main = styled.main`
   flex: 1 0 auto;
@@ -330,32 +350,29 @@ const Main = styled.main`
 `;
 const MainWrapper = styled.div`
   display: flex;
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 `;
 const Aside = styled.aside`
   margin-right: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
+  @media (max-width: 1024px) {
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
 `;
-const ImgSixWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-bottom: 18px;
-`;
-const ImgSix = styled.img`
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin: 10px;
-`;
-
 const Menu = styled.div`
   width: 184px;
   background-color: #777777;
   margin-bottom: 20px;
+  @media (max-width: 1024px) {
+    flex-grow: 1;
+    width: auto;
+  }
 `;
 const MenuUl = styled.ul`
   margin: 0;
@@ -365,6 +382,32 @@ const MenuUl = styled.ul`
 `;
 const BoldLi = styled(Li)`
   font-weight: 600;
+`;
+const AsideImg = styled.img`
+  @media (max-width: 1024px) {
+    margin: 10px auto;
+  }
+`;
+const ImgSixWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-bottom: 18px;
+	@media (max-width: 500px) {
+    margin: 10px auto;
+		flex-grow: 1;
+  }
+`;
+const ImgSix = styled.img`
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 10px;
+	@media (max-width: 500px) {
+    margin: 10px auto;
+  }
 `;
 
 const Task = styled.div`
@@ -382,12 +425,23 @@ const MainContentWrapper = styled.div``;
 const AboutWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+	@media (max-width: 1024px) {
+   flex-wrap: wrap; 
+  }
 `;
 const About = styled.div`
   background-color: #dcdcdc;
   width: 370px;
   padding: 23px;
   box-sizing: border-box;
+  @media (max-width: 1024px) {
+    width: auto;
+    flex-basis: 370px;
+    flex-shrink: 1;
+    box-sizing: content-box;
+		margin: 5px auto;
+  }
+	
 `;
 const AboutText = styled.p`
   margin: 0;
@@ -397,14 +451,18 @@ const Footer = styled.footer`
   width: 100%;
   display: flex;
   padding-bottom: 25px;
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 `;
 const FooterList = styled.div`
   width: 298px;
   margin-right: 28px;
   background-color: #777777;
+  @media (max-width: 1024px) {
+		margin: 5px auto;
+  }
 `;
-const FooterListCol = styled(FooterList)``;
-const FooterListRow = styled(FooterList)``;
 const FooterUlRow = styled.ul`
   margin: 0;
   padding: 14px 20px;
@@ -424,6 +482,19 @@ const ColLi = styled(Li)``;
 
 const RowLi = styled(Li)`
   width: 100%;
+`;
+
+const FooterBlock = styled.div`
+  @media (max-width: 1024px) {
+    margin: 5px auto;
+  }
+`;
+
+const FooterImg = styled.img`
+  @media (max-width: 1024px) {
+    max-width: 100%;
+		height: auto;
+  }
 `;
 
 export default Task3;
