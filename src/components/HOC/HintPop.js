@@ -27,7 +27,19 @@ const HintPop = WrappedComponent => {
   }
   return HintWrapper;
 };
+const pulse = keyframes`
+	from {
+    transform: scale3d(1, 1, 1);
+  }
 
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+`;
 const fadeInUp = keyframes`
   from {
     opacity: 0;
@@ -75,6 +87,11 @@ const HintToggle = styled.button`
   border: none;
   background: url(${InfoIcon}) 0 0 / contain no-repeat;
   cursor: pointer;
+  animation: ${pulse} 0.5s 2;
+  transition: 0.3s all;
+  :hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
   @media (max-width: 640px) {
     top: 10px;
     left: 10px;
