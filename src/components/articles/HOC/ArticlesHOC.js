@@ -66,11 +66,25 @@ const Main = styled.div`
   flex: 1 0 auto;
 `;
 const Container = styled.div`
-  width: 960px;
-  margin: 0 auto;
+	padding: 0 400px;
+	@media (max-width: 1700px) {
+		padding: 0 300px;
+  }
+	@media (max-width: 1500px) {
+		padding: 0 200px;
+  }
+	@media (max-width: 1000px) {
+		padding: 0 75px;
+  }
+	@media (max-width: 550px) {
+		padding: 0 25px;
+  }
 `;
 const PostsWrapper = styled.div`
   padding: 40px 0;
+	@media (max-width: 1000px) {
+		padding: 0 10px;
+  }
 `;
 const Footer = styled.div`
   flex: 0 0 auto;

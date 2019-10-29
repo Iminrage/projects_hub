@@ -37,10 +37,6 @@ const PostsWrapper = styled.div``;
 const PostLinkWrapper = styled.div`
   margin-bottom: 30px;
 `;
-const PostHeading = styled.h2`
-  padding: 5px 100px 10px 150px;
-  color: white;
-`;
 const NewLink = styled(Link)`
   display: flex;
   text-decoration: none;
@@ -51,9 +47,29 @@ const NewLink = styled(Link)`
     background-color: rgba(180, 226, 255, 0.1);
   }
 `;
+const PostHeading = styled.h2`
+  padding: 5px 100px 10px 150px;
+  color: white;
+	@media (max-width: 1000px) {
+		padding: 5px 50px 15px 100px;
+  }
+	@media (max-width: 700px) {
+		text-align: center;
+		padding: 5px 0 0 10px;
+  }
+`;
 const PostText = styled.p`
   padding: 0 100px 20px 100px;
   color: white;
+	@media (max-width: 1000px) {
+		padding: 0 50px 15px 50px;
+  }
+	@media (max-width: 700px) {
+		padding: 0 10px 5px 10px;
+  }
+	@media (max-width: 500px) {
+		padding: 0 5px 5px 5px;
+  }
 `;
 const TextContent = styled.div``;
 const ExtraContent = styled.div``;
