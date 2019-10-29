@@ -45,20 +45,14 @@ class Navbar extends Component {
         this.state.projects.length - 1
       );
     }
-    let nextLink = checker(
-      linkNum + 1,
-      0,
-      this.state.projects.length - 1
+    let nextLink = checker(linkNum + 1, 0, this.state.projects.length - 1);
+    let prevLink = checker(linkNum - 1, 0, this.state.projects.length - 1);
+    this.setState(
+      { linkNum: linkNum, nextLink: nextLink, prevLink: prevLink },
+      () => {
+        console.log(prevLink, linkNum, nextLink);
+      }
     );
-    let prevLink = checker(
-      linkNum - 1,
-      0,
-      this.state.projects.length - 1
-    );
-    this.setState({ linkNum: linkNum, nextLink: nextLink, prevLink: prevLink }, ()=>{
-			console.log(prevLink, linkNum, nextLink);
-			
-		});
   };
   render() {
     return (
@@ -79,10 +73,15 @@ class Navbar extends Component {
                 );
               })}
             </Ul>
-            <NavBtnPrev data-action="reduce" onClick={this.handlePagination} />
+            <NavBtnPrev
+              data-action="reduce"
+              onClick={this.handlePagination}
+              to={this.state.projects[this.state.prevLink].link}
+            />
             <NavBtnNext
               data-action="increase"
-              onClick={this.handlePagination}
+							onClick={this.handlePagination}
+							to={this.state.projects[this.state.nextLink].link}
             />
           </Nav>
         </NavCase>
@@ -162,7 +161,7 @@ const Alink = styled.a`
     color: green;
   }
 `;
-const NavBtn = styled.button`
+const NavBtn = styled(NavLink)`
   position: absolute;
   border: none;
   display: block;
