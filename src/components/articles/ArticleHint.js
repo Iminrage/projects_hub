@@ -2,7 +2,7 @@ import React from "react";
 import HintPop from "../HOC/HintPop";
 import styled from "styled-components";
 
-const Hint = () => {
+const ArticleHint = () => {
   return (
     <div className="">
       <HintText>
@@ -39,4 +39,4 @@ const HintBText = styled.b`
   text-transform: uppercase;
 `;
 
-export default HintPop(Hint);
+export default HintPop(ArticleHint);
