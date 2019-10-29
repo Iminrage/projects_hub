@@ -18,12 +18,12 @@ const ArticlesApp = WrappedComponent => {
             </Container>
           </Header>
           <Main>
-            <ArticleHint />
             <Container>
               <PostsWrapper>
                 <WrappedComponent {...props} />
               </PostsWrapper>
             </Container>
+            <ArticleHint />
           </Main>
         </ContentWrapper>
         <Footer></Footer>
@@ -54,7 +54,7 @@ const PageWrapper = styled.div`
 const ContentWrapper = styled.div`
   flex: 1 0 auto;
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
 `;
 const Header = styled.header`
   border-bottom: 1px solid white;
@@ -66,24 +66,27 @@ const Main = styled.div`
   flex: 1 0 auto;
 `;
 const Container = styled.div`
-	padding: 0 400px;
-	@media (max-width: 1700px) {
-		padding: 0 300px;
+  padding: 0 400px;
+  @media (max-width: 1700px) {
+    padding: 0 300px;
   }
-	@media (max-width: 1500px) {
-		padding: 0 200px;
+  @media (max-width: 1500px) {
+    padding: 0 200px;
   }
-	@media (max-width: 1000px) {
-		padding: 0 75px;
+  @media (max-width: 1000px) {
+    padding: 0 75px;
   }
-	@media (max-width: 550px) {
-		padding: 0 25px;
+  @media (max-width: 550px) {
+    padding: 0 25px;
+  }
+  @media (max-width: 380px) {
+    padding: 0 15px;
   }
 `;
 const PostsWrapper = styled.div`
   padding: 40px 0;
-	@media (max-width: 1000px) {
-		padding: 0 10px;
+  @media (max-width: 1000px) {
+    padding: 0 10px;
   }
 `;
 const Footer = styled.div`
