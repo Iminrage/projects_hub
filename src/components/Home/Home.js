@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import LinksPop from "./LinksPop";
 import Bg from "../img/bg.jpg";
+import InfoIcon from "../img/infoIcon.png";
 
 class Home extends Component {
   state = {
@@ -304,7 +305,6 @@ const Dot = styled(PaginationBtn)`
 `;
 const Hint = styled.div`
   display: ${props => (props.opened ? "block" : "none")};
-	display: none;
   position: absolute;
   bottom: 10%;
   left: 0;
@@ -312,20 +312,48 @@ const Hint = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   transform-origin: left;
   animation: ${fadeInUp} 0.5s both;
+	@media (max-width: 640px) {
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: auto;
+		bottom: auto;
+		background-color: rgba(0, 0, 0, 0.95);
+		animation: ${fadeIn} 0.5s both;
+		display: ${props => (props.opened ? "flex" : "none")};
+		align-items: center;
+  }
 `;
 const HintToggle = styled.button`
   position: absolute;
-  bottom: 0;
-  right: 5%;
-  width: 30px;
-  height: 30px;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+	border: none;
+	background: url(${InfoIcon}) 0 0 / contain no-repeat;
+	cursor: pointer;
+	@media (max-width: 640px) {
+		top: 10px;
+		left: 10px;
+		right: auto;
+		bottom: auto;
+  }
 `;
 const HintText = styled.p`
   color: #dcf1ff;
   text-align: center;
-  width: 30%;
-  padding: 20px 0;
-  margin: 0 auto;
+	padding: 20px 200px;
+	margin: 0;
+	@media (max-width: 1500px) {
+		padding: 20px 400px;
+  }
+	@media (max-width: 1200px) {
+		padding: 10px 200px;
+  }
+	@media (max-width: 1000px) {
+		padding: 10px 50px;
+  }
 `;
 const HintBText = styled.b`
   color: brown;
