@@ -17,12 +17,14 @@ const ArticlesApp = WrappedComponent => {
               </NewLink>
             </Container>
           </Header>
-          <Container>
-            <PostsWrapper>
-              <WrappedComponent {...props} />
-            </PostsWrapper>
+          <Main>
             <ArticleHint />
-          </Container>
+            <Container>
+              <PostsWrapper>
+                <WrappedComponent {...props} />
+              </PostsWrapper>
+            </Container>
+          </Main>
         </ContentWrapper>
         <Footer></Footer>
       </PageWrapper>
@@ -51,6 +53,9 @@ const PageWrapper = styled.div`
 `;
 const ContentWrapper = styled.div`
   flex: 1 0 auto;
+`;
+const Main = styled.div`
+	position: relative;
 `;
 const Header = styled.header`
   border-bottom: 1px solid white;
