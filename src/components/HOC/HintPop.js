@@ -87,9 +87,11 @@ const HintToggle = styled.button`
   border: none;
   background: url(${InfoIcon}) 0 0 / contain no-repeat;
   cursor: pointer;
+	opacity: 0.9;
   animation: ${pulse} 0.5s 2;
   transition: 0.3s all;
-  :hover {
+  :hover :focus {
+		opacity: 1;
     transform: scale3d(1.1, 1.1, 1.1);
   }
   @media (max-width: 640px) {
