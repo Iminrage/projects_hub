@@ -30,12 +30,30 @@ class Article extends Component {
     return (
       <PageWrapper>
         <PostWrapper>{post}</PostWrapper>
-        <button onClick={this.handleClick}>Открыть/закрыть комментарии</button>
+        <CommentBtn onClick={this.handleClick}>
+          {this.state.comments ? "Close" : "Open"} commentary section
+        </CommentBtn>
         {comment}
       </PageWrapper>
     );
   }
 }
+
+const CommentBtn = styled.button`
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 4px 4px 0 0;
+  color: black;
+  margin: 1px;
+  transition: 0.3s all;
+  :hover {
+    box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.9);
+  }
+`;
 
 const mapPropsToState = (state, ownProps) => {
   let id = ownProps.match.params.post_id;
