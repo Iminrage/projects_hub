@@ -161,7 +161,7 @@ const Alink = styled.a`
     color: green;
   }
 `;
-const NavBtn = styled.button`
+const NavBtn = styled(NavLink)`
   position: absolute;
   border: none;
   display: block;
