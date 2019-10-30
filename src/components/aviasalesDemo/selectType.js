@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+function SelectType(props) {
+  const options = props.tripTypes.map((values, idx) => (
+    <Option key={idx} value={values}>
+      {values}
+    </Option>
+  ));
+  return (
+    <div>
+      <Select name="" id="">
+        {options}
+      </Select>
+    </div>
+  );
+}
 const Option = styled.option``;
 const Select = styled.select`
   border: none;
@@ -19,20 +33,13 @@ const Select = styled.select`
   font-size: 16px;
   line-height: 20px;
   color: #4a4a4a;
+	@media (max-width: 1050px) {
+		margin: 1px;
+		width: 311px;
+  }
+	@media (max-width: 640px) {
+		width: 308px;
+  }
 `;
 
-function SelectType(props) {
-  const options = props.tripTypes.map((values, idx) => (
-    <Option key={idx} value={values}>
-      {values}
-    </Option>
-  ));
-  return (
-    <div>
-      <Select name="" id="">
-        {options}
-      </Select>
-    </div>
-  );
-}
 export default SelectType;

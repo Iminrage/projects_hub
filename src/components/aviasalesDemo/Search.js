@@ -51,49 +51,51 @@ class Search extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    alert("submited!");
   };
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <InputsWrapper>
-          <MainInputWrapperWithSwap>
-            <MainSearchInputs
+          <CityInputs>
+            <MainSearchInputDept
               type="text"
               placeholder={"Откуда"}
               data-pos={0}
               value={this.state.inputValues.dept}
               onChange={this.handleInputChange}
             />
-            <Swap onClick={this.handleSwap}>
-              <SwapArrowR>{"—>"}</SwapArrowR>
-              <SwapArrowL>{"<—"}</SwapArrowL>
-            </Swap>
-          </MainInputWrapperWithSwap>
-          <MainInputWrapper>
-            <MainSearchInputs
-              type="text"
-              placeholder={"Куда"}
-              data-pos={1}
-              value={this.state.inputValues.dest}
-              onChange={this.handleInputChange}
+            {/*               <Swap onClick={this.handleSwap}>
+                <SwapArrowR>{"—>"}</SwapArrowR>
+                <SwapArrowL>{"<—"}</SwapArrowL>
+              </Swap> */}
+              <MainSearchInputDest
+                type="text"
+                placeholder={"Куда"}
+                data-pos={1}
+                value={this.state.inputValues.dest}
+                onChange={this.handleInputChange}
+              />
+          </CityInputs>
+          <OtherInputs>
+            <DateInputs>
+              <MainSearchInput
+                type="date"
+                data-pos={2}
+                value={this.state.inputValues.today}
+                onChange={this.handleInputChange}
+              />
+              <MainSearchInput
+                type="date"
+                data-pos={3}
+                value={this.state.inputValues.recomendedBackDate}
+                onChange={this.handleInputChange}
+              />
+            </DateInputs>
+            <SelectType
+              tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
             />
-          </MainInputWrapper>
-
-          <MainSearchInputs
-            type="date"
-            data-pos={2}
-            value={this.state.inputValues.today}
-            onChange={this.handleInputChange}
-          />
-          <MainSearchInputs
-            type="date"
-            data-pos={3}
-            value={this.state.inputValues.recomendedBackDate}
-            onChange={this.handleInputChange}
-          />
-          <SelectType
-            tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
-          />
+          </OtherInputs>
         </InputsWrapper>
         <SearchButton onClick={this.handleSubmit}>Найти билеты</SearchButton>
       </Form>
@@ -101,7 +103,17 @@ class Search extends React.Component {
   }
 }
 
-const MainSearchInputs = styled.input`
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  @media (max-width: 1050px) {
+  }
+`;
+const MainSearchInput = styled.input`
   border: none;
   box-shadow: none;
   box-sizing: border-box;
@@ -109,7 +121,6 @@ const MainSearchInputs = styled.input`
   margin: 0 1px;
   height: 56px;
   width: ${props => (props.type === "date" ? "180px" : "224px")};
-  border-radius: ${props => (props.dataset === 0 ? "6px 0 0 6px" : null)};
   background: #ffffff;
 
   font-family: Roboto;
@@ -118,43 +129,51 @@ const MainSearchInputs = styled.input`
   font-size: 16px;
   line-height: 20px;
   color: #4a4a4a;
+
+  @media (max-width: 1050px) {
+    margin: 1px 1px;
+    width: ${props => (props.type === "date" ? "154px" : "310px")};
+  }  
+	@media (max-width: 640px) {
+    margin: 1px 1px;
+    width: ${props => (props.type === "date" ? "153px" : "308px")};
+  }
 `;
+
+const MainSearchInputDept = styled(MainSearchInput)`
+  position: relative;
+	border-radius: 6px 0 0 6px;
+	@media (max-width: 1050px) {
+		border-radius: 6px 0 0 0;
+  }
+`;
+const MainSearchInputDest = styled(MainSearchInput)``;
 
 const InputsWrapper = styled.div`
   display: flex;
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+  }
 `;
-const Form = styled.form`
-  width: 100%;
+
+const CityInputs = styled.div`
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-`;
-const SearchButton = styled.button`
-  margin-top: 48px;
-  box-shadow: none;
-  border: none;
-  padding: 15px 74px 16px 45px;
-  background: #ff9241;
-  border-radius: 4px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 28px;
-  line-height: 33px;
-  color: #ffffff;
-  flex-grow: 0;
-  transition: all 0.1s;
-  cursor: pointer;
-  :hover {
-    transform: scale(1.02);
-    box-shadow: 0px 8px 25px 0 rgba(74, 74, 74, 0.22);
-  }
-  :active {
-    background: #ff9a00;
+	@media (max-width: 640px) {
+		flex-direction: column;
   }
 `;
+
+const DateInputs = styled.div`
+  display: flex;
+`;
+const OtherInputs = styled.div`
+  display: flex;
+  @media (max-width: 640px) {
+		flex-direction: column;
+  }
+`;
+
 const Swap = styled.div`
   position: absolute;
   border: 1px solid red;
@@ -181,8 +200,30 @@ const MainInputWrapper = styled.div`
   flex-direction: column;
 `;
 
-const MainInputWrapperWithSwap = styled(MainInputWrapper)`
-  position: relative;
+
+const SearchButton = styled.button`
+  margin-top: 48px;
+  box-shadow: none;
+  border: none;
+  padding: 15px 74px 16px 45px;
+  background: #ff9241;
+  border-radius: 4px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 33px;
+  color: #ffffff;
+  flex-grow: 0;
+  transition: all 0.1s;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.02);
+    box-shadow: 0px 8px 25px 0 rgba(74, 74, 74, 0.22);
+  }
+  :active {
+    background: #ff9a00;
+  }
 `;
 
 export default Search;
