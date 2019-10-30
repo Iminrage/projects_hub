@@ -32,12 +32,10 @@ class Search extends React.Component {
   }
   handleInputChange = event => {
     let val = event.target.value;
-    console.log();
     let num = event.target.dataset.pos;
     const newVals = this.state.inputValues;
     newVals[num] = val;
     this.setState({ inputValues: newVals });
-    console.log(this.state.inputValues);
   };
   handleSwap = () => {
     let newVals = this.state.inputValues;
@@ -46,7 +44,6 @@ class Search extends React.Component {
       dept: this.state.inputValues.dest,
       dest: this.state.inputValues.dept
     };
-    console.log(newVals);
     this.setState({ inputValues: newVals });
   };
   handleSubmit = e => {

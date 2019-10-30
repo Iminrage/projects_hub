@@ -48,10 +48,7 @@ class Navbar extends Component {
     let nextLink = checker(linkNum + 1, 0, this.state.projects.length - 1);
     let prevLink = checker(linkNum - 1, 0, this.state.projects.length - 1);
     this.setState(
-      { linkNum: linkNum, nextLink: nextLink, prevLink: prevLink },
-      () => {
-        console.log(prevLink, linkNum, nextLink);
-      }
+      { linkNum: linkNum, nextLink: nextLink, prevLink: prevLink }
     );
   };
   render() {

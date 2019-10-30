@@ -5,7 +5,6 @@ import styled from "styled-components";
 import ArticlesHOC from "./HOC/ArticlesHOC";
 
 const Home = props => {
-  console.log(props);
   const { posts } = props;
   const postsList = props.posts.length ? (
     posts.map(post => {

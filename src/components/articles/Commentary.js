@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 import CreateComment from "./CreateComment";
 
 function Commentary(props) {
-  console.log(props);
   const commentaries = props.comments.length ? (
     props.comments.map(com => {
       return (

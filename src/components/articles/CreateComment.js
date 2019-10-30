@@ -41,10 +41,8 @@ class CreateComment extends Component {
     const { commentValues } = this.state;
     e.preventDefault();
     if (commentValues.author.length && commentValues.body.length) {
-      console.log(commentValues);
       this.props.addComment(commentValues);
     } else {
-      console.log("Текущие значения инпутов", commentValues);
     }
   };
   render() {
