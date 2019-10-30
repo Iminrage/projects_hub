@@ -2,8 +2,6 @@ import React from "react";
 import Search from "./Search";
 import styled from "styled-components";
 
-
-
 class AviasalesApp extends React.Component {
   render() {
     return (
@@ -11,7 +9,11 @@ class AviasalesApp extends React.Component {
         <main>
           <SectSearch>
             <SectSearchFlexWrapper className="sect-search__search-form">
-              <MainTitle>Пока что сломаный<br/>Поиск дешевых авиабилетов</MainTitle>
+              <MainTitle>
+                Пока что сломаный
+                <br />
+                Поиск дешевых авиабилетов
+              </MainTitle>
               <MainTitleSub>
                 Лучший способ купить авиабилеты дешево
               </MainTitleSub>
@@ -24,19 +26,21 @@ class AviasalesApp extends React.Component {
   }
 }
 
-
 const SectSearch = styled.section`
   width: 100%;
   min-height: 100vh;
-	padding: 40px 0;
   background: #2196f3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 const SectSearchFlexWrapper = styled.div`
+  padding: 40px 0;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/*   justify-content: center;
+  align-items: center; */
   align-content: center;
 `;
 const MainTitle = styled.h1`
