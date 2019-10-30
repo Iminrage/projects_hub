@@ -2,9 +2,33 @@ import React from "react";
 import Search from "./Search";
 import styled from "styled-components";
 
+
+
+class AviasalesApp extends React.Component {
+  render() {
+    return (
+      <div>
+        <main>
+          <SectSearch>
+            <SectSearchFlexWrapper className="sect-search__search-form">
+              <MainTitle>Пока что сломаный<br/>Поиск дешевых авиабилетов</MainTitle>
+              <MainTitleSub>
+                Лучший способ купить авиабилеты дешево
+              </MainTitleSub>
+              <Search />
+            </SectSearchFlexWrapper>
+          </SectSearch>
+        </main>
+      </div>
+    );
+  }
+}
+
+
 const SectSearch = styled.section`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+	padding: 40px 0;
   background: #2196f3;
 `;
 const SectSearchFlexWrapper = styled.div`
@@ -42,25 +66,5 @@ const MainTitleSub = styled.p`
 
   color: #ffffff;
 `;
-
-class AviasalesApp extends React.Component {
-  render() {
-    return (
-      <div>
-        <main>
-          <SectSearch>
-            <SectSearchFlexWrapper className="sect-search__search-form">
-              <MainTitle>Пока что сломаный<br/>Поиск дешевых авиабилетов</MainTitle>
-              <MainTitleSub>
-                Лучший способ купить авиабилеты дешево
-              </MainTitleSub>
-              <Search />
-            </SectSearchFlexWrapper>
-          </SectSearch>
-        </main>
-      </div>
-    );
-  }
-}
 
 export default AviasalesApp;
