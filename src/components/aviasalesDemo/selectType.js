@@ -35,10 +35,12 @@ const Select = styled.select`
   color: #4a4a4a;
 	@media (max-width: 1050px) {
 		margin: 1px;
-		width: 311px;
+		width: 310px;
+		border-radius: 0 0 6px 0;
   }
 	@media (max-width: 640px) {
 		width: 308px;
+		border-radius: 0 0 6px 6px;
   }
 `;
 
