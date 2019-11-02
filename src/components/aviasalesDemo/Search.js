@@ -34,6 +34,11 @@ class Search extends React.Component {
     this.setState({ inputValues: newVals });
   };
   handleSwap = () => {
+    let response = fetch(
+      "http://autocomplete.travelpayouts.com/places2?term=Mos&locale=ru&types[]=country&callback=function"
+    );
+
+
     let newVals = this.state.inputValues;
     newVals = {
       ...this.state.inputValues,
@@ -173,7 +178,10 @@ const MainSearchInput = styled.input`
   font-size: 16px;
   line-height: 20px;
   color: #4a4a4a;
-
+	:focus{
+		outline: none;
+		box-shadow: 0 0 0 2px #ff6d00;
+	}
   @media (max-width: 1050px) {
     margin: 1px 1px;
     width: ${props => (props.type === "date" ? "154px" : "310px")};
@@ -254,11 +262,11 @@ const Swap = styled.div`
   justify-content: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-	@media (max-width: 640px) {
-		top: auto;
+  @media (max-width: 640px) {
+    top: auto;
     right: 10px;
-		bottom: -13px;
-		transform: rotate(-90deg);
+    bottom: -13px;
+    transform: rotate(-90deg);
   }
 `;
 const SwapArrow = styled.span`
@@ -321,10 +329,10 @@ const SearchButton = styled.button`
 `;
 const SearchButtonIcon = styled.span`
   position: absolute;
-	display: flex;
-	right: 25px;
-	top: 50%;
-	transform: translateY(-50%);
+  display: flex;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 export default Search;

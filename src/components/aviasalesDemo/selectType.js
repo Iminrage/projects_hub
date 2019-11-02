@@ -33,6 +33,10 @@ const Select = styled.select`
   font-size: 16px;
   line-height: 20px;
   color: #4a4a4a;
+	:focus{
+		outline: none;
+		box-shadow: 0 0 0 2px #ff6d00;
+	}
 	@media (max-width: 1050px) {
 		margin: 1px;
 		width: 310px;
