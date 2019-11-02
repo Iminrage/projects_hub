@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import LinksPop from "./LinksPop";
-import Hint from "./Hint"
+import Hint from "./Hint";
 import Bg from "../img/bg.jpg";
 
 class Home extends Component {
@@ -155,7 +155,7 @@ class Home extends Component {
           </Pagination>
         </About>
         <Hint></Hint>
-        
+
         <LinksPop></LinksPop>
       </HomePageContainer>
     );
@@ -179,16 +179,17 @@ const fadeIn = keyframes`
 	}
 `;
 const HomePageContainer = styled.div`
+  position: relative;
   background: url(${Bg}) center center / cover no-repeat;
   padding: 0 400px;
-	@media (max-width: 1500px) {
-		padding: 0 200px;
+  @media (max-width: 1500px) {
+    padding: 0 200px;
   }
-	@media (max-width: 1200px) {
-		padding: 0 100px;
+  @media (max-width: 1200px) {
+    padding: 0 100px;
   }
-	@media (max-width: 640px) {
-		padding: 0 0;
+  @media (max-width: 640px) {
+    padding: 0 0;
   }
 `;
 
@@ -209,14 +210,14 @@ const AboutGreeting = styled.h2`
   padding: 0;
   color: #dcf1ff;
   font-family: "PT Sans Bold", sans-serif;
-	font-size: 26px;
-	text-shadow: 2px 3px 6px rgba(0,0,0,0.63);
+  font-size: 26px;
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.63);
   text-transform: uppercase;
   transform-origin: 0 100%;
   animation: ${widthGrow} 0.5s both 0.3s;
-	@media (max-width: 640px) {
-		font-size: 18px;
-		margin-bottom: 15px;
+  @media (max-width: 640px) {
+    font-size: 18px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -228,24 +229,23 @@ const AboutRowTexts = styled.div`
   box-sizing: border-box;
   margin-bottom: 40px;
   justify-content: center;
-	align-items: center;
+  align-items: center;
   color: #dcf1ff;
   background-color: rgba(0, 0, 0, 0.2);
-	@media (max-width: 1500px) {
-		padding: 20px 100px;
+  @media (max-width: 1500px) {
+    padding: 20px 100px;
   }
-	@media (max-width: 1200px) {
-		padding: 10px 50px;
+  @media (max-width: 1200px) {
+    padding: 10px 50px;
   }
-	@media (max-width: 640px) {
-		padding: 10px 30px;
-		margin-bottom: 15px;
+  @media (max-width: 640px) {
+    padding: 10px 30px;
+    margin-bottom: 15px;
   }
-	
 `;
 const PageText = styled.p`
   text-align: center;
-	text-shadow: 1px 1px 6px rgba(0,0,0,0.63);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.63);
   display: ${props => (props.active === true ? "block" : "none")};
   animation: ${fadeIn} 0.5s both;
 `;
@@ -283,7 +283,5 @@ const Dot = styled(PaginationBtn)`
   width: 10px;
   height: 10px;
 `;
-
-
 
 export default Home;
