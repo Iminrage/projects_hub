@@ -28,13 +28,6 @@ function Commentary(props) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
-  let post_id = ownProps.post_id;
-  return {
-    comments: state.comments.filter(comment => comment.post_id === post_id)
-  };
-};
-
 const fadeInDown = keyframes`
 	from {
 		transform: scale3d(1,0,1)
@@ -52,17 +45,22 @@ const CommentarySection = styled.div`
 `;
 const AuthorName = styled.span`
   display: inline-block;
-	color: white;
+  color: white;
   font-size: 18px;
 `;
 const ComText = styled.p`
   color: white;
-	font-size: 16px;
+  font-size: 16px;
 `;
 const ExistingComments = styled.div`
-	padding: 20px 0;
-	margin: 5px 0;
+  padding: 20px 0;
+  margin: 5px 0;
 `;
-
+const mapStateToProps = (state, ownProps) => {
+  let post_id = ownProps.post_id;
+  return {
+    comments: state.comments.filter(comment => comment.post_id === post_id)
+  };
+};
 
 export default connect(mapStateToProps)(Commentary);
