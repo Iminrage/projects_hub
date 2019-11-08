@@ -1,21 +1,15 @@
-import posts from "../jsons/posts.json";
-import comments from "../jsons/postsComments.json";
+import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
+import aviaInputsReducer from "./aviaInputsReducer";
+import commentsReducer from "./commentsReducer";
+import postReducer from "./postReducer";
 
-const initState = {
-  posts: posts,
-  comments: comments
-};
 
-const rootReducer = (state = initState, action) => {
-  if (action.type === "ADD_COMMENT") {
-    let newComments = state.comments;
-    newComments.push(action.commentValues);
-    return {
-      ...state,
-      comments: newComments
-    };
-  }
-  return state;
-};
+const rootReducer = combineReducers({
+	form: formReducer,
+	posts: postReducer,
+	comments: commentsReducer,
+  aviaInputs: aviaInputsReducer
+});
 
 export default rootReducer;
