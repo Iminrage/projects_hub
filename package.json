@@ -1,8 +1,8 @@
 {
   "name": "testapp",
   "version": "0.1.0",
-	"private": true,
-	"homepage": "https://iminrage.github.io/projects_hub/",
+  "private": true,
+  "homepage": "https://iminrage.github.io/projects_hub/",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.10.1",
@@ -11,15 +11,16 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
+    "redux-form": "^8.2.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-		"test": "react-scripts test",
-		"predeploy": "yarn run build",
-   	"deploy": "gh-pages -d build",
+    "test": "react-scripts test",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
