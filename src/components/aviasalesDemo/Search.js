@@ -1,168 +1,91 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SelectType from "./selectType";
 import styled from "styled-components";
+import AutoCompleteInput from "./AutoCompleteInput";
+import DatePicker from "./datePicker";
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValues: {
-        dept: "",
-        dest: "",
-        today: "",
-        recomendedBackDate: ""
-      }
-    };
-  }
-  componentDidMount() {
-    /* TODO */
-    let geoCity = "Москва";
-    let newVals = this.state.inputValues;
-    newVals = {
-      ...newVals,
-      dept: geoCity
-    };
-    this.setState({
-      inputValues: newVals
-    });
-  }
-  handleInputChange = event => {
-    let val = event.target.value;
-    let track = event.target.dataset.track;
-    const newVals = this.state.inputValues;
-    newVals[track] = val;
-    this.setState({ inputValues: newVals });
+const Search = props => {
+  const names = ["dept", "dest", "deptDate", "backDate"];
+  const [focus, setFocus] = useState(null);
+  const [render, reRender] = useState(null);
+  const [valueStore, setValueStore] = useState({
+    [names[0]]: "",
+    [names[1]]: "",
+    [names[2]]: "",
+    [names[3]]: ""
+  });
+  const handleFocus = e => {
+    setFocus(e);
+    reRender(render + 1);
   };
-  handleSwap = () => {
-    let response = fetch(
-      "http://autocomplete.travelpayouts.com/places2?term=Mos&locale=ru&types[]=country&callback=function"
-    );
-
-
-    let newVals = this.state.inputValues;
-    newVals = {
-      ...this.state.inputValues,
-      dept: this.state.inputValues.dest,
-      dest: this.state.inputValues.dept
-    };
-    this.setState({ inputValues: newVals });
+  const saveValue = (name, value) => {
+    setValueStore({ ...valueStore, [name]: value });
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    alert("submited!");
-  };
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <InputsWrapper>
-          <CityInputs>
-            <MainSearchInputDeptWrapper>
-              <MainSearchInputDept
-                type="text"
-                placeholder={"Откуда"}
-                data-track="dept"
-                value={this.state.inputValues.dept}
-                onChange={this.handleInputChange}
-              />
-              <Swap onClick={this.handleSwap}>
-                <SwapCircle></SwapCircle>
-                <SwapArrowL>
-                  <svg
-                    width="16"
-                    height="8"
-                    viewBox="0 0 16 8"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M5 8L0 4L5 0V3H16V5H5V8Z"
-                      fill="#1BA6D2"
-                    />
-                  </svg>
-                </SwapArrowL>
-                <SwapArrowR>
-                  <svg
-                    width="16"
-                    height="8"
-                    viewBox="0 0 16 8"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M11 0L16 4L11 8V5L0 5V3L11 3V0Z"
-                      fill="#1BA6D2"
-                    />
-                  </svg>
-                </SwapArrowR>
-              </Swap>
-            </MainSearchInputDeptWrapper>
-            <MainSearchInputDest
-              type="text"
-              placeholder={"Куда"}
-              data-track="dest"
-              value={this.state.inputValues.dest}
-              onChange={this.handleInputChange}
+  return (
+    <Form>
+      <SearchButton type="submit">
+        Найти билеты
+        <SearchButtonIcon>
+          <svg
+            width="26"
+            height="21"
+            viewBox="0 0 26 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M11.1586 9.06805H5.22021L1.49152 6.08511L0 6.83084L1.74078 9.73212C1.58307 9.96887 1.49152 10.2535 1.49152 10.5596C1.49152 10.7731 1.53577 10.9756 1.61566 11.1584L0 14.2883L1.49152 15.0341L5.22021 12.0511H11.1862L7.45746 21H10.4404L16.4064 12.0511H23.8625C24.6922 12.0511 25.3553 11.3833 25.3553 10.5596C25.3553 9.7301 24.687 9.06805 23.8625 9.06805H16.4064L10.4404 0.119141H7.45746C7.45746 0.119141 9.84949 5.99219 11.1862 9.06805H11.1586Z"
+              fill="white"
             />
-          </CityInputs>
-          <OtherInputs>
-            <DateInputs>
-              <MainSearchInputDateDept
-                type="date"
-                data-track="today"
-                value={this.state.inputValues.today}
-                onChange={this.handleInputChange}
-              />
-              <MainSearchInputDateDest
-                type="date"
-                data-track="recomendedBackDate"
-                value={this.state.inputValues.recomendedBackDate}
-                onChange={this.handleInputChange}
-              />
-            </DateInputs>
-            <SelectType
-              tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
-            />
-          </OtherInputs>
-        </InputsWrapper>
-        <SearchButton onClick={this.handleSubmit}>
-          Найти билеты
-          <SearchButtonIcon>
-            <svg
-              width="26"
-              height="21"
-              viewBox="0 0 26 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M11.1586 9.06805H5.22021L1.49152 6.08511L0 6.83084L1.74078 9.73212C1.58307 9.96887 1.49152 10.2535 1.49152 10.5596C1.49152 10.7731 1.53577 10.9756 1.61566 11.1584L0 14.2883L1.49152 15.0341L5.22021 12.0511H11.1862L7.45746 21H10.4404L16.4064 12.0511H23.8625C24.6922 12.0511 25.3553 11.3833 25.3553 10.5596C25.3553 9.7301 24.687 9.06805 23.8625 9.06805H16.4064L10.4404 0.119141H7.45746C7.45746 0.119141 9.84949 5.99219 11.1862 9.06805H11.1586Z"
-                fill="white"
-              />
-            </svg>
-          </SearchButtonIcon>
-        </SearchButton>
-      </Form>
-    );
-  }
-}
+          </svg>
+        </SearchButtonIcon>
+      </SearchButton>
+      <InputsWrapper>
+        <CityInputs>
+          <AutoCompleteInput
+            name={names[0]}
+            pos={0}
+            focused={focus === 0 && true}
+            changeValue={saveValue}
+            value={valueStore[names[0]]}
+            tryFocus={handleFocus}
+          />
+          <AutoCompleteInput
+            name={names[1]}
+            pos={1}
+            focused={focus === 1 && true}
+            changeValue={saveValue}
+            value={valueStore[names[1]]}
+            tryFocus={handleFocus}
+          />
+        </CityInputs>
+        <OtherInputs>
+          <DateInputs>
+            <DatePicker type="date" name={names[2]} />
+            <DatePicker type="date" name={names[3]} />
+          </DateInputs>
+          <SelectType
+            tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
+          />
+        </OtherInputs>
+      </InputsWrapper>
+    </Form>
+  );
+};
 
 const Form = styled.form`
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-content: center;
   align-items: center;
   @media (max-width: 1050px) {
   }
 `;
-const MainSearchInput = styled.input`
+/* const MainSearchInput = styled.div`
   border: none;
   box-shadow: none;
   box-sizing: border-box;
@@ -178,10 +101,10 @@ const MainSearchInput = styled.input`
   font-size: 16px;
   line-height: 20px;
   color: #4a4a4a;
-	:focus{
-		outline: none;
-		box-shadow: 0 0 0 2px #ff6d00;
-	}
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ff6d00;
+  }
   @media (max-width: 1050px) {
     margin: 1px 1px;
     width: ${props => (props.type === "date" ? "154px" : "310px")};
@@ -190,8 +113,10 @@ const MainSearchInput = styled.input`
     margin: 1px 1px;
     width: ${props => (props.type === "date" ? "153px" : "308px")};
   }
+`; */
+/* const AutoComplete = styled(AutoCompleteInput)`
+  position: relative;
 `;
-
 const MainSearchInputDeptWrapper = styled.div`
   position: relative;
 `;
@@ -221,9 +146,9 @@ const MainSearchInputDateDept = styled(MainSearchInput)`
   @media (max-width: 640px) {
     border-radius: 0 0 0 0;
   }
-`;
+`; */
 
-const MainSearchInputDateDest = styled(MainSearchInput)``;
+/* const MainSearchInputDateDest = styled(MainSearchInput)``; */
 const InputsWrapper = styled.div`
   display: flex;
 
@@ -234,8 +159,38 @@ const InputsWrapper = styled.div`
 
 const CityInputs = styled.div`
   display: flex;
+  flex-direction: row;
   @media (max-width: 640px) {
     flex-direction: column;
+  }
+`;
+
+const AutoCompleteInputWrapper = styled.div`
+  position: relative;
+`;
+const AutoList = styled.ul`
+  display: ${props => (props.visible ? "block" : "none")};
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  max-height: 250px;
+`;
+const AutoKey = styled.li`
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  background: ${props => props.selected && "gray"};
+`;
+const AKeyData = styled.span`
+  & {
+    pointer-events: none;
   }
 `;
 
@@ -249,7 +204,7 @@ const OtherInputs = styled.div`
   }
 `;
 
-const Swap = styled.div`
+/* const Swap = styled.div`
   position: absolute;
   top: 50%;
   right: -13px;
@@ -268,8 +223,8 @@ const Swap = styled.div`
     bottom: -13px;
     transform: rotate(-90deg);
   }
-`;
-const SwapArrow = styled.span`
+`; */
+/* const SwapArrow = styled.span`
   position: relative;
   display: flex;
   justify-content: center;
@@ -286,8 +241,8 @@ const SwapCircle = styled.div`
   ${Swap}:hover & {
     transform: scale3d(1.15, 1.15, 1.15);
   }
-`;
-const SwapArrowR = styled(SwapArrow)`
+`; */
+/* const SwapArrowR = styled(SwapArrow)`
   transition: 0.2s all;
 
   ${Swap}:hover & {
@@ -300,7 +255,7 @@ const SwapArrowL = styled(SwapArrow)`
   ${Swap}:hover & {
     transform: translateX(-10%);
   }
-`;
+`; */
 
 const SearchButton = styled.button`
   position: relative;
