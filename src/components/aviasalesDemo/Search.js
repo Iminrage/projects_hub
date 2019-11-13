@@ -21,6 +21,13 @@ const Search = props => {
   const saveValue = (name, value) => {
     setValueStore({ ...valueStore, [name]: value });
   };
+  const handleSwap = () => {
+    setValueStore({
+      ...valueStore,
+      [names[0]]: valueStore[names[1]],
+      [names[1]]: valueStore[names[0]]
+    });
+  };
   return (
     <Form>
       <SearchButton type="submit">
@@ -44,14 +51,51 @@ const Search = props => {
       </SearchButton>
       <InputsWrapper>
         <CityInputs>
-          <AutoCompleteInput
-            name={names[0]}
-            pos={0}
-            focused={focus === 0 && true}
-            changeValue={saveValue}
-            value={valueStore[names[0]]}
-            tryFocus={handleFocus}
-          />
+          <div className="" style={{ position: "relative" }}>
+            <AutoCompleteInput
+              name={names[0]}
+              pos={0}
+              focused={focus === 0 && true}
+              changeValue={saveValue}
+              value={valueStore[names[0]]}
+              tryFocus={handleFocus}
+            />
+            <Swap onClick={handleSwap}>
+              <SwapCircle></SwapCircle>
+              <SwapArrowL>
+                <svg
+                  width="16"
+                  height="8"
+                  viewBox="0 0 16 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M5 8L0 4L5 0V3H16V5H5V8Z"
+                    fill="#1BA6D2"
+                  />
+                </svg>
+              </SwapArrowL>
+              <SwapArrowR>
+                <svg
+                  width="16"
+                  height="8"
+                  viewBox="0 0 16 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 0L16 4L11 8V5L0 5V3L11 3V0Z"
+                    fill="#1BA6D2"
+                  />
+                </svg>
+              </SwapArrowR>
+            </Swap>
+          </div>
           <AutoCompleteInput
             name={names[1]}
             pos={1}
@@ -204,7 +248,7 @@ const OtherInputs = styled.div`
   }
 `;
 
-/* const Swap = styled.div`
+const Swap = styled.div`
   position: absolute;
   top: 50%;
   right: -13px;
@@ -223,8 +267,8 @@ const OtherInputs = styled.div`
     bottom: -13px;
     transform: rotate(-90deg);
   }
-`; */
-/* const SwapArrow = styled.span`
+`;
+const SwapArrow = styled.span`
   position: relative;
   display: flex;
   justify-content: center;
@@ -241,8 +285,8 @@ const SwapCircle = styled.div`
   ${Swap}:hover & {
     transform: scale3d(1.15, 1.15, 1.15);
   }
-`; */
-/* const SwapArrowR = styled(SwapArrow)`
+`;
+const SwapArrowR = styled(SwapArrow)`
   transition: 0.2s all;
 
   ${Swap}:hover & {
@@ -255,7 +299,7 @@ const SwapArrowL = styled(SwapArrow)`
   ${Swap}:hover & {
     transform: translateX(-10%);
   }
-`; */
+`;
 
 const SearchButton = styled.button`
   position: relative;
