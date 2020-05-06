@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -6,7 +6,9 @@ import ArticlesHOC from "./HOC/ArticlesHOC";
 
 const Home = props => {
 	const { posts } = props;
-	
+	useEffect(()=>{
+		document.title = "Articles Demo";
+	})
   const postsList = posts.length ? (
     posts.map(post => {
       return (
