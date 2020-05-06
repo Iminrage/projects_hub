@@ -1,45 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./Search";
 import styled from "styled-components";
 
-class AviasalesApp extends React.Component {
-  render() {
-    return (
-      <div>
-        <main>
-          <SectSearch>
-            <SectSearchFlexWrapper className="sect-search__search-form">
-              <MainTitle>
-                Пока что сломаный
-                <br />
-                Поиск дешевых авиабилетов
-              </MainTitle>
-              <MainTitleSub>
-                Лучший способ купить авиабилеты дешево
-              </MainTitleSub>
-              <Search />
-            </SectSearchFlexWrapper>
-          </SectSearch>
-        </main>
-      </div>
-    );
-  }
-}
+const AviasalesApp = () => {
+	useEffect(()=>{
+		document.title = "Aviasales Demo";
+	})
+  return (
+    <div>
+      <main>
+        <SectSearch>
+          <SectSearchFlexWrapper className="sect-search__search-form">
+            <MainTitle>
+              Пока что сломаный
+              <br />
+              Поиск дешевых авиабилетов
+            </MainTitle>
+            <MainTitleSub>Лучший способ купить авиабилеты дешево</MainTitleSub>
+            <Search />
+          </SectSearchFlexWrapper>
+        </SectSearch>
+      </main>
+    </div>
+  );
+};
 
 const SectSearch = styled.section`
   width: 100%;
   min-height: 100vh;
   background: #2196f3;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const SectSearchFlexWrapper = styled.div`
   padding: 40px 0;
   height: 100%;
   display: flex;
   flex-direction: column;
-/*   justify-content: center;
+  /*   justify-content: center;
   align-items: center; */
   align-content: center;
 `;

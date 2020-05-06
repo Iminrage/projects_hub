@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import SelectType from "./selectType";
 import styled from "styled-components";
 import AutoCompleteInput from "./AutoCompleteInput";
-import DatePicker from "./datePicker";
+import DatePicker from "./DatePicker";
 
 const Search = props => {
   const names = ["dept", "dest", "deptDate", "backDate"];
-  const [focus, setFocus] = useState(null);
+  const [focus, setFocus] = useState(0);
   const [render, reRender] = useState(null);
   const [valueStore, setValueStore] = useState({
-    [names[0]]: "",
-    [names[1]]: "",
+    [names[0]]: {city: "Москва", code: "MOW"},
+    [names[1]]: {city: "", code: ""},
     [names[2]]: "",
     [names[3]]: ""
   });
@@ -18,8 +18,12 @@ const Search = props => {
     setFocus(e);
     reRender(render + 1);
   };
-  const saveValue = (name, value) => {
-    setValueStore({ ...valueStore, [name]: value });
+  const saveValue = (name, value, code) => {
+    if (code) {
+      setValueStore({ ...valueStore, [name]: {city: value, code} });
+    } else {
+			setValueStore({ ...valueStore, [name]: {city: value, code: ""} });
+		}
   };
   const handleSwap = () => {
     setValueStore({
@@ -51,14 +55,28 @@ const Search = props => {
       </SearchButton>
       <InputsWrapper>
         <CityInputs>
-          <div className="" style={{ position: "relative" }}>
+          <InputDest>
+            <AutoCompleteInput
+              name={names[1]}
+              pos={1}
+              focused={focus === 1 && true}
+              changeValue={saveValue}
+							value={valueStore[names[1]].city}
+							code={valueStore[names[1]].code}
+              tryFocus={handleFocus}
+              placeholder={"Куда"}
+            />
+          </InputDest>
+          <InputDept>
             <AutoCompleteInput
               name={names[0]}
               pos={0}
               focused={focus === 0 && true}
               changeValue={saveValue}
-              value={valueStore[names[0]]}
+							value={valueStore[names[0]].city}
+							code={valueStore[names[0]].code}
               tryFocus={handleFocus}
+              placeholder={"Откуда"}
             />
             <Swap onClick={handleSwap}>
               <SwapCircle></SwapCircle>
@@ -95,24 +113,38 @@ const Search = props => {
                 </svg>
               </SwapArrowR>
             </Swap>
-          </div>
-          <AutoCompleteInput
-            name={names[1]}
-            pos={1}
-            focused={focus === 1 && true}
-            changeValue={saveValue}
-            value={valueStore[names[1]]}
-            tryFocus={handleFocus}
-          />
+          </InputDept>
         </CityInputs>
         <OtherInputs>
           <DateInputs>
-            <DatePicker type="date" name={names[2]} />
-            <DatePicker type="date" name={names[3]} />
+            <DateBack>
+              <DatePicker
+                name={names[3]}
+                pos={3}
+                focused={focus === 3 && true}
+                changeValue={saveValue}
+                value={valueStore[names[3]]}
+                tryFocus={handleFocus}
+                placeholder={"Обратно"}
+              />
+            </DateBack>
+            <DateDept>
+              <DatePicker
+                name={names[2]}
+                pos={2}
+                focused={focus === 2 && true}
+                changeValue={saveValue}
+                value={valueStore[names[2]]}
+                tryFocus={handleFocus}
+                placeholder={"Туда"}
+              />
+            </DateDept>
           </DateInputs>
-          <SelectType
-            tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
-          />
+          <Select>
+            <SelectType
+              tripTypes={["1 пассажир, эконом", "2 пассажира, эконом"]}
+            />
+          </Select>
         </OtherInputs>
       </InputsWrapper>
     </Form>
@@ -129,70 +161,6 @@ const Form = styled.form`
   @media (max-width: 1050px) {
   }
 `;
-/* const MainSearchInput = styled.div`
-  border: none;
-  box-shadow: none;
-  box-sizing: border-box;
-  padding: 18px 16px;
-  margin: 0 1px;
-  height: 56px;
-  width: ${props => (props.type === "date" ? "180px" : "224px")};
-  background: #ffffff;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: #4a4a4a;
-  :focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #ff6d00;
-  }
-  @media (max-width: 1050px) {
-    margin: 1px 1px;
-    width: ${props => (props.type === "date" ? "154px" : "310px")};
-  }
-  @media (max-width: 640px) {
-    margin: 1px 1px;
-    width: ${props => (props.type === "date" ? "153px" : "308px")};
-  }
-`; */
-/* const AutoComplete = styled(AutoCompleteInput)`
-  position: relative;
-`;
-const MainSearchInputDeptWrapper = styled.div`
-  position: relative;
-`;
-
-const MainSearchInputDept = styled(MainSearchInput)`
-  position: relative;
-  border-radius: 6px 0 0 6px;
-  @media (max-width: 1050px) {
-    border-radius: 6px 0 0 0;
-  }
-  @media (max-width: 640px) {
-    border-radius: 6px 6px 0 0;
-  }
-`;
-const MainSearchInputDest = styled(MainSearchInput)`
-  @media (max-width: 1050px) {
-    border-radius: 0 6px 0 0;
-  }
-  @media (max-width: 640px) {
-    border-radius: 0 0 0 0;
-  }
-`;
-const MainSearchInputDateDept = styled(MainSearchInput)`
-  @media (max-width: 1050px) {
-    border-radius: 0 0 0 6px;
-  }
-  @media (max-width: 640px) {
-    border-radius: 0 0 0 0;
-  }
-`; */
-
-/* const MainSearchInputDateDest = styled(MainSearchInput)``; */
 const InputsWrapper = styled.div`
   display: flex;
 
@@ -203,49 +171,45 @@ const InputsWrapper = styled.div`
 
 const CityInputs = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  flex-basis: 50%;
   @media (max-width: 640px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;
 
-const AutoCompleteInputWrapper = styled.div`
+const InputDept = styled.div`
   position: relative;
+  flex-basis: 50%;
+  margin: 1px;
 `;
-const AutoList = styled.ul`
-  display: ${props => (props.visible ? "block" : "none")};
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  max-height: 250px;
-`;
-const AutoKey = styled.li`
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  user-select: none;
-  background: ${props => props.selected && "gray"};
-`;
-const AKeyData = styled.span`
-  & {
-    pointer-events: none;
-  }
-`;
-
-const DateInputs = styled.div`
-  display: flex;
+const InputDest = styled.div`
+  flex-basis: 50%;
+  margin: 1px;
 `;
 const OtherInputs = styled.div`
   display: flex;
+  flex-basis: 50%;
   @media (max-width: 640px) {
     flex-direction: column;
   }
+`;
+const DateInputs = styled.div`
+  display: flex;
+	flex-direction: row-reverse;
+  flex-basis: 60%;
+`;
+const DateDept = styled.div`
+  flex-basis: 50%;
+  margin: 1px;
+`;
+const DateBack = styled.div`
+  flex-basis: 50%;
+  margin: 1px;
+`;
+const Select = styled.div`
+  flex-basis: 40%;
+  margin: 1px;
 `;
 
 const Swap = styled.div`
@@ -333,5 +297,4 @@ const SearchButtonIcon = styled.span`
   top: 50%;
   transform: translateY(-50%);
 `;
-
 export default Search;
