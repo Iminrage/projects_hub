@@ -10,6 +10,7 @@ class Home extends Component {
     hintIsOpen: true
   };
   componentDidMount() {
+		document.title = "ProjectHub";
     this.interval = setInterval(() => {
       let page = this.state.page + 1;
       page > 8 && clearInterval(this.interval);

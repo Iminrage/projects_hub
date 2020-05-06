@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
 import Navbar from "./components/Navbar";
 import Layout from "./components/layout/Layout";
 import Home from "./components/Home/Home";

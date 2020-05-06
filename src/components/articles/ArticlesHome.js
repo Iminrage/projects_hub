@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ArticlesHOC from "./HOC/ArticlesHOC";
 
 const Home = props => {
-  const { posts } = props;
-  const postsList = props.posts.length ? (
+	const { posts } = props;
+	useEffect(()=>{
+		document.title = "Articles Demo";
+	})
+  const postsList = posts.length ? (
     posts.map(post => {
       return (
         <PostLinkWrapper key={post.id}>
@@ -26,11 +29,7 @@ const Home = props => {
   return <PostsWrapper>{postsList}</PostsWrapper>;
 };
 
-const mapStateToProps = state => {
-  return {
-    posts: state.posts
-  };
-};
+
 
 const PostsWrapper = styled.div``;
 const PostLinkWrapper = styled.div`
@@ -72,5 +71,12 @@ const PostText = styled.p`
 `;
 const TextContent = styled.div``;
 const ExtraContent = styled.div``;
+
+const mapStateToProps = state => {	
+  return {
+    posts: state.posts
+  };
+};
+
 
 export default connect(mapStateToProps)(ArticlesHOC(Home));

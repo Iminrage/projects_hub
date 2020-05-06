@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./img/logo.png";
 import ImgOfSix from "./img/imgOfSix.png";
 import Green from "./img/green.png";
 import styled from "styled-components";
 import Foot from "./img/foot.png";
 
-function Task3() {
+const Task3 = () => {
+	useEffect(()=>{
+		document.title = "Layout Demo";
+	})
   return (
     <Task3Wrapper>
       <ContentContainer>

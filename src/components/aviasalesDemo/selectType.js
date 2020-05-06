@@ -21,7 +21,6 @@ const Select = styled.select`
   box-shadow: none;
   box-sizing: border-box;
   padding: 18px 16px;
-  margin: 0 1px;
   height: 56px;
   width: 212px;
   border-radius: 0 6px 6px 0;

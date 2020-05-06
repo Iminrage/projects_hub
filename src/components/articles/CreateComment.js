@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { addComment } from "../../reducers/actions/postActions";
+import { addComment } from "../../actions/postActions";
 
 class CreateComment extends Component {
   constructor(props) {

@@ -55,12 +55,6 @@ const CommentBtn = styled.button`
   }
 `;
 
-const mapPropsToState = (state, ownProps) => {
-  let id = ownProps.match.params.post_id;
-  return {
-    post: state.posts.find(post => post.id === id)
-  };
-};
 
 const PageWrapper = styled.div`
   color: white;
@@ -68,4 +62,12 @@ const PageWrapper = styled.div`
 const PostWrapper = styled.div``;
 const PostHeading = styled.h3``;
 
-export default connect(mapPropsToState)(ArticlesHOC(Article));
+const mapStateToProps = (state, ownProps) => {
+	let id = ownProps.match.params.post_id;
+	return {
+		post: state.posts.find(post => post.id === id)
+		
+		
+	};
+};
+export default connect(mapStateToProps)(ArticlesHOC(Article));
